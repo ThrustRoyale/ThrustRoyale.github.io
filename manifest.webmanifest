@@ -1,0 +1,19 @@
+{
+  "name": "Thrust Royale",
+  "short_name": "Thrust Royale",
+  "description": "Fast 2D battle royale.",
+  "start_url": "./Royale.html",
+  "scope": "./",
+  "id": "./Royale.html",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "landscape",
+  "background_color": "#0d0a14",
+  "theme_color": "#0d0a14",
+  "categories": ["games"],
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
