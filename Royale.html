@@ -1013,6 +1013,14 @@ body.plk #modeb,body.plk #start,body.plk #dsc,body.plk #fcc{display:none!importa
 .cun{margin:0;font-size:12px;color:#d9e2ee;text-align:center}
 #cue{width:min(340px,92%);box-sizing:border-box;font:600 14px "Chakra Petch",system-ui,sans-serif;padding:7px 12px;border-radius:10px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;text-align:center}
 #cue::placeholder{color:#c3b8dd}
+#acc{z-index:70;align-items:center;justify-content:center;overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 10px) 18px calc(env(safe-area-inset-bottom,0px) + 10px);text-align:center}
+#acc .qw{width:min(380px,94vw);margin:0 auto;gap:8px}
+#acc input{width:100%;box-sizing:border-box;font:600 15px "Chakra Petch",system-ui,sans-serif;padding:10px 12px;border-radius:10px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff}
+#acc input::placeholder{color:#c3b8dd}
+#acc .bt{width:100%;font-size:17px;padding:11px 16px}
+#acc .acl{background:none;border:0;color:var(--gold);font:700 13px "Chakra Petch",system-ui,sans-serif;text-decoration:underline;padding:4px}
+#acc p{margin:0;font-size:13px;color:#d9e2ee;line-height:1.4}#accm{min-height:18px;font-weight:700;color:#ffd27a!important}
+@media (max-height:420px){#acc .qw{gap:5px}#acc h2{font-size:20px;margin:0}#acc input{padding:6px 10px}#acc .bt{padding:7px 14px;font-size:15px}}
 .cpg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%}
 .cpk{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 6px 10px;border-radius:14px;border:1.5px solid rgba(255,255,255,.26);background:linear-gradient(180deg,rgba(18,12,40,.74),rgba(18,12,40,.42));text-align:center}
 .cpk b{font-size:20px;color:#fff}.cpk small{font-size:11px;color:#d9e2ee}
@@ -1105,6 +1113,7 @@ s.addEventListener('pointerdown',function(e){e.stopPropagation();e.preventDefaul
 <div class="ov hide" id="rkmenu"><button class="bt alt vback" id="rmb" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><div id="rmcur"></div><div id="rmlist"></div></div>
 <div class="ov hide" id="fod"><button class="bt alt vback" id="fodb" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><div id="fodl"><canvas id="fodc"></canvas></div><div id="fodr"><h2 id="fodn"></h2><div id="fodt"></div><ul id="fodf"></ul></div><button class="bt" id="fodq">Equip</button></div><div class="ov hide" id="vt"><button class="bt alt vback" id="vtb" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><div id="vcw"><i class="zc"></i> <b id="vcoins">0</b></div><div id="vm"><h2>Vault</h2><button class="vmb on" data-m="c"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 21a7 7 0 0 1 14 0"/></svg>Character</button><button class="vmb" data-m="o"><svg viewBox="0 0 24 24"><path d="M8 4L3 7l2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/></svg>Outfit</button><button class="vmb" data-m="e"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14c1 1.6 2 2.2 3.5 2.2s2.5-.6 3.5-2.2M9 9.5h.01M15 9.5h.01"/></svg>Emotes</button><button class="vmb" data-m="j"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="5" height="12" rx="2.5"/><rect x="14" y="3" width="5" height="12" rx="2.5"/><path d="M7.5 17.5v3M16.5 17.5v3M10 8h4"/></svg>Jetpacks</button><button class="vmb" data-m="r"><svg viewBox="0 0 24 24"><path d="M7 21l-.6-13a5.6 5.6 0 0 1 11.2 0L17 21z"/><path d="M9.5 9h5v5h-5z"/></svg>Revival Box</button><button class="vmb" data-m="l"><svg viewBox="0 0 24 24"><path d="M4 9h16v11H4z"/><path d="M3 9l1.5-4h15L21 9"/><path d="M4 14h16"/></svg>Lootbox</button></div><div id="vr"><h2 id="vrt">Character</h2><div class="vcards" id="vcc"></div></div></div>
 <div class="ov hide" id="sto"><div class="qw"><h2>Store</h2><p class="qh"><i class="zc"></i> <b id="stc">0</b> &nbsp;<i class="gm"></i> <b id="stg">0</b></p><p id="stm" style="margin:0;font-size:13px;min-height:18px;text-align:center"></p><div class="sw2"><div id="stn"></div><div id="stl"></div></div><button class="bt alt vback" id="stob" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button></div></div>
+<div class="ov hide" id="acc"><div class="qw"><h2 id="acct">Account</h2><div id="accb" style="width:100%;display:flex;flex-direction:column;gap:8px;align-items:center"></div></div></div>
 <div class="ov hide" id="cur"><div class="qw"><h2>Currencies</h2><p class="qh"><i class="zc"></i> <b id="cuc">0</b> &nbsp;<i class="gm"></i> <b id="cug">0</b></p><p id="curm" style="margin:0;font-size:13px;min-height:18px;text-align:center"></p><div id="curt"></div><div id="curl"></div><button class="bt alt vback" id="curb2" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button></div></div>
 <div class="ov hide" id="qs"><div class="qw"><h2>Quests</h2><p class="qh"><i class="zc"></i> <b id="qc">0</b> &nbsp;<i class="gm"></i> <b id="qg">0</b> &nbsp;<i class="spi"></i> <b id="qp">0</b></p><div id="qtabs"><button class="qtb on" id="qtd" data-t="d">Daily <em id="qtdc"></em><s id="qtdd" class="hide"></s></button><button class="qtb" id="qtw" data-t="w">Weekly <em id="qtwc"></em><s id="qtwd" class="hide"></s></button></div><p class="qh"><span id="qr"></span></p><p id="qm"></p><div id="ql"></div><button class="bt alt vback" id="qb" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button></div></div>
 <div class="ov hide" id="lo"><button class="bt alt vback" id="lobk" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><div class="lotabs"><button class="bt on" id="lot-w">Weapons</button><button class="bt alt" id="lot-s">Skins</button><button class="bt alt" id="lot-b">Badges</button></div><div class="lw"><div id="ll"></div><div id="lr"><div id="lh"><canvas id="lc" width="160" height="70"></canvas><h3 id="ln"></h3></div><div id="lt"><button class="bt on" id="lt-s">Stats</button><button class="bt alt" id="lt-m">Mastery</button></div><div id="ls"></div><div id="lx"></div><div id="lm" class="hide"></div><div id="lq" class="hide"></div></div></div></div>
@@ -1145,7 +1154,7 @@ s.addEventListener('pointerdown',function(e){e.stopPropagation();e.preventDefaul
 <div class="ov hide" id="infp" style="align-items:center;justify-content:center;text-align:center;z-index:9"><div class="mwrap" style="max-width:380px;padding:0 20px"><h2 id="infh"></h2><p id="inft" style="max-width:none;margin:0"></p><button class="bt" id="infx">Close</button></div></div>
 <div class="ov hide" id="tut"><div class="tw"><h2>How to play</h2><div class="tt" id="tutt"></div><div class="tb" id="tutb"></div><div class="tn"><button class="bt alt" id="tutp">Back</button><button class="bt" id="tutn">Next</button></div></div></div>
 <div class="ov hide" id="set"><button class="bt alt vback" id="sbt" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><div id="setn"><h2>Settings</h2><button class="setb on" data-p="b"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 21a7 7 0 0 1 14 0"/></svg>Basic</button><button class="setb" data-p="c"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="5"/><path d="M8 11v4M6 13h4M15.5 12h.01M18 14h.01"/></svg>Controls</button><button class="setb" data-p="d"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Display</button><button class="setb" data-p="a"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>Audio</button></div><div id="setp">
-<div class="spane on" data-p="b"><h3>Basic</h3><div class="srow"><span>Character name</span><input id="sn" maxlength="12" autocomplete="off" spellcheck="false" placeholder="You"></div><div class="srow"><span>Online save<small id="osm">Anti-cheat protected</small></span><button class="bt alt" id="sacct">Delete online data</button></div><div class="srow"><span>About<small>© 2026 Fasasi Jr. All rights reserved. Thrust Royale and its code, art and sounds may not be copied or redistributed without permission.</small></span></div></div>
+<div class="spane on" data-p="b"><h3>Basic</h3><div class="srow"><span>Character name</span><input id="sn" maxlength="12" autocomplete="off" spellcheck="false" placeholder="You"></div><div class="srow"><span>Account<small id="amsg">Guest. Link an account to protect your progress</small></span><button class="bt alt" id="abtn">Link account</button></div><div class="srow"><span>Online save<small id="osm">Anti-cheat protected</small></span><button class="bt alt" id="sacct">Delete online data</button></div><div class="srow"><span>About<small>© 2026 Fasasi Jr. All rights reserved. Thrust Royale and its code, art and sounds may not be copied or redistributed without permission.</small></span></div></div>
 <div class="spane" data-p="c"><h3>Controls</h3><div class="srow"><span>Control layout<small>Move and resize the on-screen buttons</small></span><button class="bt alt" id="sc">Customize</button></div><div class="srow"><span>Quick Throw</span><button class="bt alt tgl" id="sq">Off</button></div><div class="srow"><span>Quick reload button</span><button class="bt alt tgl" id="sqr">Off</button></div><div class="srow"><span>Aim assist</span><button class="bt alt tgl" id="sa">On</button></div><div class="srow"><span>Auto pickup</span><button class="bt alt tgl" id="sap">On</button></div></div>
 <div class="spane" data-p="d"><h3>Display</h3><div class="srow"><span>Transparent HUD</span><button class="bt alt tgl" id="sth">Off</button></div><div class="srow"><span>Damage numbers</span><button class="bt alt tgl" id="sd">Off</button></div><div class="srow"><span>Graphics quality<small>Low runs smoother on slower phones</small></span><button class="bt alt" id="sgq">High</button></div></div>
 <div class="spane" data-p="a"><h3>Audio</h3><div class="srow"><span>Sound effects</span><button class="bt alt tgl" id="ssf">On</button></div><div class="srow"><span>Music</span><button class="bt alt tgl" id="smu">On</button></div><div class="srow"><span>Audio quality<small>Low uses less processing. Try it if sound crackles</small></span><button class="bt alt" id="saq">High</button></div></div>
@@ -1356,7 +1365,7 @@ cx.fillStyle=d.hit>0?'#fff':'#9b5de5';cx.strokeStyle='#2b2d42';cx.lineWidth=2;cx
 else{var qx=d.x*T-cam.x,qy=d.y*T-cam.y;if(qx<-T*3||qx>W+T*3||qy<-T*3||qy>H+T*3)return;
 var ph2=Object.create(o);ph2.x=d.x;ph2.y=d.y;ph2.vx=d.vx;ph2.vy=d.vy;ph2.g=d.g;ph2.f=d.f;ph2.fl=d.hit>0?.1:0;ph2.sl=0;ph2.inv=0;ph2.heal=0;ph2.cl=0;ph2.abt=0;ph2.dn=0;ph2.jp='';ph2.ang=d.ang;ph2.rl=0;ph2.ch=o.ch;ph2.tc=((o===P||isTm(o,P))?'#3a86ff':'#e63946');
 drawChar(cx,ph2,qx,qy,T);cx.save();cx.translate(qx+d.w*T/2,qy+d.h*T*.5);cx.rotate(d.ang);if(Math.cos(d.ang)<0)cx.scale(1,-1);armsDraw(cx,ph2,T,0);drawGunRl(cx,ph2,T);armsDraw(cx,ph2,T,1);cx.restore();
-if(o===P||(!P.al&&o===spec)){cx.fillStyle='#2b2d42';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.textAlign='center';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';cx.fillText(nm(o),qx+d.w*T/2,qy-T*.42)}}})}
+if(P&&isTm(o,P)){cx.fillStyle='#2b2d42';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.textAlign='center';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';cx.fillText(nm(o),qx+d.w*T/2,qy-T*.42)}}})}
 function abxArrow(d,tm){var e=d.tg;if(!e||!e.al||!P||!P.al||!(d.o===P||isTm(d.o,P)))return;
 var px=(P.x+.35)*T-cam.x,py=(P.y+.45)*T-cam.y,ex=(e.x+.35)*T-cam.x,ey=(e.y+.45)*T-cam.y,an=Math.atan2(ey-py,ex-px),r=T*1.5,ds=Math.round(Math.hypot(e.x-P.x,e.y-P.y));
 cx.save();cx.translate(px+Math.cos(an)*r,py+Math.sin(an)*r);cx.rotate(an);cx.globalAlpha=.95;cx.fillStyle='#ff465a';cx.strokeStyle='#fff';cx.lineWidth=2.5;cx.beginPath();cx.moveTo(T*.3,0);cx.lineTo(-T*.18,-T*.2);cx.lineTo(-T*.07,0);cx.lineTo(-T*.18,T*.2);cx.closePath();cx.fill();cx.stroke();cx.restore();
@@ -4874,9 +4883,17 @@ a.cd-=dt;if(a.fl>0)a.fl-=dt;
 if(wbase(a.wp)==='lmg'){if(I.fire&&a.rl<=0)a.spu=(a.spu||0)+dt;else a.spu=Math.max(0,(a.spu||0)-dt*2)}else a.spu=0;
 }
 function los(a,b){return seg(a.x+.35,a.y+.45,b.x+.35,b.y+.45,1)}
-function seekPU(b,mx){var best=null,bd=mx||45,hpN=ARM()?b.ar<ARMX*.5:b.hp<170,gunN=botNeedsGun(b);
+function botGuns(b){return((b.wp!=='pistol'&&b.am>0)?1:0)+((b.sv&&b.sv.wp!=='pistol'&&b.sv.am>0)?1:0)}
+function seekPU(b,mx){var best=null,bd=mx||45,br=gm==='br',hpN=ARM()?b.ar<ARMX*(br?.85:.5):b.hp<170,gunN=botNeedsGun(b),g2=br&&botGuns(b)<2;
 PU.forEach(function(u){var ok=0;if(u.t==='hp')ok=hpN;else if(isAm(u)){var ak=u.t.slice(5),hw=amTarget(b,ak);ok=hw&&hw.am<WP[hw.wp].a*1.2}
-else if(u.t==='box')ok=0;else if(WP[u.t])ok=gunN&&u.t!=='pistol';if(!ok)return;var d=Math.hypot(u.x-b.x,u.y-b.y);if(u.t==='hp'&&(ARM()?b.ar<ARMX*.25:b.hp<90))d*=.4;if(d<bd){bd=d;best=u}});return best}
+else if(u.t==='box')ok=0;else if(WP[u.t])ok=(gunN||g2)&&u.t!=='pistol';
+else if(br&&u.t==='wall')ok=(b.wc||0)<6;else if(br&&isTb(u))ok=((b.tb&&b.tb[u.t])||0)<2;
+if(!ok)return;var d=Math.hypot(u.x-b.x,u.y-b.y);if(u.t==='hp'&&(ARM()?b.ar<ARMX*.25:b.hp<90))d*=.4;
+if(br){if(u.b)d*=.7;/* loot box dropped by a defeated player */if(gunN&&WP[u.t])d*=.6/* no usable gun: guns come first */}
+if(d<bd){bd=d;best=u}});return best}
+/* a bot without a usable gun grabs a nearby pickup while still shooting at its target, instead of fighting on with a pistol */
+function lootDash(b,tg){if(!botNeedsGun(b))return false;var u=seekPU(b,24);if(!u)return false;var I=b.inp,dx=tg.x-b.x,dy=tg.y-b.y,d=Math.hypot(dx,dy);
+goTo(b,u.x,u.y);I.ang=Math.atan2(dy-.1,dx)+(b.err||0);I.fire=(d<13&&los(b,tg))?1:0;return true}
 /* ===== bot navigation for every mode: tile graph + A*, path following, stuck recovery ===== */
 var NVB=3,NDT=.016,NVPART=0;
 function navBad(b){var P=b.bzP;if(P)for(var q=b.bzI||0;q<P.length;q++)if(P[q].k==='n'){b.bzB=(b.bzB||[]).slice(-5).concat(P[q].n);break}b.bzP=null;b.bzT=0}
@@ -5042,11 +5059,11 @@ if(gm==='br'){var okE=hn(b)>=120&&(b.wp==='pistol'||b.am>0||b.mg>0);if(best&&!(b
 if(false)A.forEach(function(o){if(o!==b&&o.al&&!isTm(o,b)&&o.inp&&o.inp.fire&&!o.off&&Math.hypot(o.x-b.x,o.y-b.y)<22)b.mem={x:o.x+(Math.random()-.5)*5,y:o.y,t:2}});
 if(best&&gm==='fo')foSeen(b,best);if(!HD)b.str=Math.random()<.5?-1:1;b.err=(Math.random()-.5)*(.75-PLBK()/6*.72)*(gm==='br'?1.6:1);if(!best&&!HD&&Math.random()<.25)b.wd=-b.wd}
 var tg=b.tg;if(tg&&!tg.al)tg=b.tg=null;if(b.fb>0)tg=b.tg=null;var sO=gm==='snd'?sndObj(b,tg):0;if(gm==='snd'&&SND.bm.st==='planted'&&b.tm!==SND.att&&!b.R){var hpn=b.hp+(b.ar||0);if(b.dhp===undefined)b.dhp=hpn;if(hpn<b.dhp-1&&sndNear(b,1-SND.att)){b.nd=4+Math.random()*2;b.fle=hn(b)<90?1:0}b.dhp=hpn;if(b.nd>0){b.nd-=dt;if(!b.fle)sO=0}}if(sO===2)tg=b.tg=null;if(gm==='ball'&&tg&&BL.c===b)tg=b.tg=null
-I.fire=0;I.jmp=0;I.drop=0;I.mx=0;if(!tg)startReload(b,.6);
+I.fire=0;I.jmp=0;I.drop=0;I.mx=0;if(!tg)startReload(b,.6);if(gm==='br'&&b.rl<=0&&b.sv&&b.sv.wp!=='pistol'&&b.sv.am>0&&!(b.wp!=='pistol'&&b.am>0))swapGun(b);
 var zn=(ZNX>=0&&(ZPH==='shrink'||ZRM<(gm==='fo'?6:14)))?ZS[ZNX]:null,tz=zn||Z,dzx=tz.cx-(b.x+.35),dzy=tz.cy-(b.y+.45),dz=Math.hypot(dzx,dzy),out=Math.hypot(Z.cx-(b.x+.35),Z.cy-(b.y+.45))>Z.r-2.5,edge=!out&&!!zn&&dz>tz.r-5,inw=!out&&!!zn&&dz>tz.r*(b.iwF?.42:.55);b.iwF=inw?1:0;
 var zm=function(){if(zoneNav(b,tz)){b.wd=I.mx||b.wd;return}I.mx=Math.abs(dzx)>1?Math.sign(dzx):0;I.jmp=(dzy<-1.5&&(b.fuel>.45||!b.g||dzy>-4))?1:0;I.drop=dzy>1.5?1:0;
 if(!I.mx&&I.jmp)for(var q=1;q<=3;q++)if(tile(Math.floor(b.x+.35),Math.floor(b.y)-q)==='#'){I.mx=b.wd;break}if(dzy<-1.5){var su=shaftDir(b,1);if(su!==null){I.mx=su;I.jmp=0}}else if(dzy>1.5){var sdn=shaftDir(b,0);if(sdn!==null)I.mx=sdn}};
-var dR=duoOn()?duoBot(b,dt,tg,out||edge||inw,zm):0;if(dR){}else if(botFlee(b,dt,tg)){}else if(gm==='snd'&&b.nd>0&&b.fle&&b.ao&&b.ao.al){I.fire=0;I.mx=-(Math.sign(b.ao.x-b.x)||1);I.ang=I.mx<0?Math.PI:0}else if(sO===1){sndNav(b,dt);sndShoot(b,tg)}else if(gm==='ball'){ballNav(b,dt)}else if(tg&&HD)aiHard(b,tg,dt,out,edge,zm);
+var dR=duoOn()?duoBot(b,dt,tg,out||edge||inw,zm):0;if(dR){}else if(botFlee(b,dt,tg)){}else if(gm==='snd'&&b.nd>0&&b.fle&&b.ao&&b.ao.al){I.fire=0;I.mx=-(Math.sign(b.ao.x-b.x)||1);I.ang=I.mx<0?Math.PI:0}else if(sO===1){sndNav(b,dt);sndShoot(b,tg)}else if(gm==='ball'){ballNav(b,dt)}else if(tg&&gm==='br'&&!out&&!inw&&lootDash(b,tg)){}else if(tg&&HD)aiHard(b,tg,dt,out,edge,zm);
 else if(tg){var dx=tg.x-b.x,dy=tg.y-b.y,d=Math.hypot(dx,dy);
 I.mx=d>7?Math.sign(dx):(d<3?-Math.sign(dx):b.str*.6);if(EZ)I.mx*=.55;
 I.ang=Math.atan2(dy-.1,dx)+b.err;I.fire=(d<(EZ?10:13)&&(los(b,tg)||(b.aw>0&&b.ao===tg&&seg(b.x+.35,b.y+.45,tg.x+.35,tg.y+.45,0))))?1:0;if(hn(b)<120&&b.wcd<=0&&Math.random()<.03&&deploy(b))b.wcd=8;
@@ -5055,7 +5072,7 @@ else if(gm==='snd'){sndNav(b,dt)}else if(gm==='ball'){ballNav(b,dt)}else{var HT=
 if(!HT&&gm==='br'&&!(b.rtr>0)&&b.mem&&!botNeedsGun(b)&&hn(b)>=110){HT=b.mem;hunt=true;if(Math.hypot(HT.x-b.x,HT.y-b.y)<2.5||(Math.abs(HT.x-b.x)<4&&Math.abs(HT.y-b.y)<2.5)){b.mem=null;HT=null;hunt=false}}
 if(hunt){hy=HT.y-b.y;b.wd=HT.x>b.x?1:-1}
 I.mx=b.wd;I.ang=b.wd>0?0:Math.PI;
-var wantPU=(!out&&!inw)?seekPU(b,(gm==='br'&&botNeedsGun(b))?80:30):null,hurtDL=HD&&DL()&&hn(b)<140;
+var wantPU=(!out&&!inw)?seekPU(b,gm==='br'?(botNeedsGun(b)?150:45):30):null,hurtDL=HD&&DL()&&hn(b)<140;
 if(out||inw)zm();
 else if(gm==='br'&&b.rtr>0){if(aiFlee(b,-b.rdr,dt)){if(I.mx)b.rdr=I.mx}else{I.mx=b.rdr;if(Math.random()<.01)I.jmp=1}}
 else if(HD&&hurtDL){I.mx=0;if(HT&&Math.hypot(HT.x-b.x,HT.y-b.y)<20)I.mx=-(Math.sign(HT.x-b.x)||1)}
@@ -5210,7 +5227,7 @@ var o_sl=a.sl,o_sd=a.sd,o_g=a.g,o_vx=a.vx;a.sl=1;a.sd=dir;a.g=1;a.vx=0;cx.save()
 var bw=T*1.1,bx=px-bw/2,by=py-T*1.05,bh=Math.max(4,T*.13),bf=Math.max(0,Math.min(1,a.bo/DBLEED));
 cx.fillStyle='rgba(43,45,66,.65)';cx.fillRect(bx,by,bw,bh);cx.fillStyle='#e63946';cx.fillRect(bx,by,bw*bf,bh);
 if(a.hu>0){cx.fillStyle='rgba(43,45,66,.65)';cx.fillRect(bx,by-bh-3,bw,bh);cx.fillStyle='#06d6a0';cx.fillRect(bx,by-bh-3,bw*Math.min(1,a.hu),bh)}
-if(a===P||(!P.al&&a===spec)){cx.textAlign='center';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';cx.fillStyle='#2b2d42';var ty=by-T*.5-(a.hu>0?bh+3:0);cx.strokeText(nm(a),px,ty);cx.fillText(nm(a),px,ty);
+if(P&&isTm(a,P)){cx.textAlign='center';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';cx.fillStyle='#2b2d42';var ty=by-T*.5-(a.hu>0?bh+3:0);cx.strokeText(nm(a),px,ty);cx.fillText(nm(a),px,ty);
 if(a!==P){var pu=1+.18*Math.sin(tm/160),u=T*.2;cx.save();cx.translate(px,ty-T*.45);cx.scale(pu,pu);cx.fillStyle='#e63946';cx.strokeStyle='#fff';cx.lineWidth=3;cx.beginPath();cx.rect(-u*.4,-u,u*.8,u*2);cx.rect(-u,-u*.4,u*2,u*.8);cx.stroke();cx.fill();cx.restore()}}}
 /* small blue arrow that circles you and always points at your living team mate */
 function duoMateArrow(m){if(!m||!m.al||m.off)return;var px=(P.x+.35)*T-cam.x,py=(P.y+.45)*T-cam.y,dx=(m.x+.35)*T-cam.x-px,dy=(m.y+.45)*T-cam.y-py,an=Math.atan2(dy,dx),d=Math.round(Math.hypot(m.x-P.x,m.y-P.y)),r=T*1.5;
@@ -5262,7 +5279,7 @@ if((gm!=='fo'||SND.ph==='live')&&Math.hypot(a.x+.35-Z.cx,a.y+.45-Z.cy)>Z.r){/* z
 for(var i=PU.length-1;i>=0;i--){var u=PU[i];if(a.al&&!a.dn&&!a.P&&near(a,u)){
 if(u.t==='hp'||u.t==='wall'||isAm(u)||isTb(u))takePU(a,u);
 else if(u.t==='box'){}
-else if(!a.R&&!DL()&&botNeedsGun(a))grab(a,u)}}});
+else if(!a.R&&!DL()&&(botNeedsGun(a)||(gm==='br'&&botGuns(a)<2)))grab(a,u)}}});
 if(pkq){if(P.al&&!P.dn&&PU.indexOf(pkq)>=0&&pkR(P,pkq))pkTake(P,pkq);pkq=null}pkAutoTake(P,null);pkUI(P);
 
 bl.forEach(function(b){var n=Math.ceil(Math.hypot(b.vx,b.vy)*dt/.35),sx=b.vx*dt/n,sy=b.vy*dt/n;
@@ -5799,8 +5816,7 @@ else if(gm==='ball'&&BL.c===a){armsDraw(cx,a,T,0);armsDraw(cx,a,T,1);cx.restore(
 if(a.heal>0){var hf2=1-a.heal/3,pr=T*(.7+.08*Math.sin(tm/110));cx.save();var hcol=ARM()?'76,201,240':'6,214,160';cx.fillStyle='rgba('+hcol+',.16)';cx.strokeStyle='rgba('+hcol+',.85)';cx.lineWidth=3;cx.beginPath();cx.arc(qx+a.w*T/2,qy+a.h*T/2,pr,0,6.2832);cx.fill();cx.stroke();
 if(a===P||(!P.al&&a===spec)){cx.fillStyle='rgba(43,45,66,.6)';var hby=qy-T*(ARM()?.72:.62);cx.fillRect(qx-T*.25,hby,a.w*T+T*.5,T*.14);cx.fillStyle=ARM()?'#4cc9f0':'#06d6a0';cx.fillRect(qx-T*.25,hby,(a.w*T+T*.5)*hf2,T*.14)}cx.restore()}
 cx.save();if(mgOn(a)||hwOf(a))cx.translate(0,-T*({tophat:.32,halo:.27,crown:.22,magic:.34}[mgOn(a)?'magic':hwOf(a)]||0));
-if(a.em&&Date.now()<a.emT)emDraw(cx,a,qx,qy,T);if(a===P||(!P.al&&a===spec)){cx.fillStyle='#2b2d42';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.textAlign='center';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';cx.fillText(nm(a),qx+a.w*T/2,qy-T*.42-(ARM()?T*.45:0))}
-else if(P&&isTm(a,P)){cx.fillStyle='#2b2d42';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.textAlign='center';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';var tnx=qx+a.w*T/2,tny=qy-T*.42;cx.strokeText(nm(a),tnx,tny);cx.fillText(nm(a),tnx,tny)}
+if(a.em&&Date.now()<a.emT)emDraw(cx,a,qx,qy,T);if(P&&isTm(a,P)){cx.fillStyle='#2b2d42';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.textAlign='center';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';var tnx=qx+a.w*T/2,tny=qy-T*.42;cx.strokeText(nm(a),tnx,tny);cx.fillText(nm(a),tnx,tny)}
 if(a===P||(!P.al&&a===spec)){var bw=a.w*T+4,bh=Math.max(4,T*.14),hf=Math.max(0,Math.min(1,a.hp/HPM()));
 cx.fillStyle='rgba(43,45,66,.5)';cx.fillRect(qx-2,qy-T*.3,bw,bh);
 cx.fillStyle=ARM()?'#fff':hf>.5?'#06d6a0':hf>.25?'#ffb703':'#e63946';cx.fillRect(qx-2,qy-T*.3,bw*hf,bh);
@@ -6057,9 +6073,9 @@ return h.map(function(x){return('00000000'+(x>>>0).toString(16)).slice(-8)}).joi
 function build(){if(H)return Promise.resolve(H);var e=document.getElementById('zzmain'),t=e?e.textContent:'';t=t.replace(/var ZZ_URL='[^']*',ZZ_KEY='[^']*';/,'var ZZ_URL=\'\',ZZ_KEY=\'\';');H=sha(t);return Promise.resolve(H)}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){}return null}
 function slot(){return A?'lockdown.settings.u.'+A.uid:'lockdown.settings'}
-function api(p,b,t,keep){return fetch(ZZ_URL+p,{method:'POST',keepalive:!!keep,headers:{'Content-Type':'application/json',apikey:ZZ_KEY,Authorization:'Bearer '+(t||ZZ_KEY)},body:JSON.stringify(b||{})}).then(function(r){return r.text().then(function(x){var j=null;try{j=JSON.parse(x)}catch(e){}
+function api(p,b,t,keep,m){m=m||'POST';return fetch(ZZ_URL+p,{method:m,keepalive:!!keep,headers:{'Content-Type':'application/json',apikey:ZZ_KEY,Authorization:'Bearer '+(t||ZZ_KEY)},body:m==='GET'?undefined:JSON.stringify(b||{})}).then(function(r){return r.text().then(function(x){var j=null;try{j=JSON.parse(x)}catch(e){}
 if(!r.ok)throw{status:r.status,msg:(j&&(j.msg||j.error_description||j.message||j.error))||('Error '+r.status)};return j})},function(){throw{status:0,msg:'Cannot reach the server'}})}
-function setA(j){A={uid:j.user.id,at:j.access_token,rt:j.refresh_token,exp:Date.now()+(j.expires_in||3600)*1000-60000};ls(AK,JSON.stringify(A))}
+function setA(j){A={uid:j.user.id,at:j.access_token,rt:j.refresh_token,exp:Date.now()+(j.expires_in||3600)*1000-60000,em:j.user.email||'',an:j.user.is_anonymous?1:0};ls(AK,JSON.stringify(A))}
 function tok(){if(!A)return Promise.reject({msg:'Not signed in'});if(Date.now()<A.exp)return Promise.resolve(A.at);
 return api('/auth/v1/token?grant_type=refresh_token',{refresh_token:A.rt}).then(function(j){setA(j);return A.at},function(e){if(e.status===400||e.status===401){var sv=ls(slot());if(sv)ls('lockdown.settings',sv);ls(AK,null);A=null;halt('Your online save session expired. Reload to start a new one.');}throw e})}
 function bk(){return'zz.base.'+(A?A.uid:'')}function dk(){return'zz.dirty.'+(A?A.uid:'')}
@@ -6079,15 +6095,23 @@ function pull(){return tok().then(function(t){return api('/rest/v1/rpc/load_prog
 if(!r||!r.data){if(ls(slot())){ls(dk(),'1');return push()}return}
 if(r.updated_at!==ls(bk())){applyServer(r);if(ls('zz.rl')!=='1'){ls('zz.rl','1');location.reload()}else halt('Cloud save loaded. Reload to continue.')}else setStat('Saved to cloud');ls('zz.rl',null)})}
 function anon(){if(ls('zz.optout')==='1')return Promise.resolve();return api('/auth/v1/signup',{}).then(function(j){if(j&&j.access_token&&j.user)return sess(j)})}
-function boot(){if(!on())return;syncTime();if(!A){anon().catch(function(){setStat('Offline - saved on this device only')});return}window.addEventListener('online',function(){push()});
+function boot(){if(!on())return;syncTime();if(!A){anon().catch(function(){setStat('Offline - saved on this device only')});return}window.addEventListener('online',function(){push()});if(!acct())me();
 document.addEventListener('visibilitychange',function(){if(document.hidden&&ls(dk()))push(1)});window.addEventListener('pagehide',function(){if(ls(dk()))push(1)});
 (ls(dk())?push():pull()).catch(function(){setStat('Offline - will retry');sched(30000)})}
+function acct(){return!!(A&&A.em&&!A.an)}
+function me(){return tok().then(function(t){return api('/auth/v1/user',null,t,0,'GET')}).then(function(u){if(u&&u.id&&A&&u.id===A.uid){A.em=u.email||'';A.an=u.is_anonymous?1:0;ls(AK,JSON.stringify(A));if(window.__accPaint)window.__accPaint()}},function(){})}
+function flush(){return ls(dk())?push():Promise.resolve()}
+function signUp(em,pw){return api('/auth/v1/signup',{email:em,password:pw}).then(function(j){if(j&&j.access_token&&j.user){ls('zz_tut','1');return sess(j)}return{pending:1}})}
+function signIn(em,pw){return flush().catch(function(){}).then(function(){return api('/auth/v1/token?grant_type=password',{email:em,password:pw})}).then(function(j){if(j&&j.access_token&&j.user){ls('zz_tut','1');return sess(j)}throw{msg:'Could not sign in'}})}
+function link(em,pw){if(!A)return signUp(em,pw);return tok().then(function(t){return api('/auth/v1/user',{email:em,password:pw},t,0,'PUT')}).then(function(u){if(u&&u.email&&!u.is_anonymous){A.em=u.email;A.an=0;ls(AK,JSON.stringify(A));return{done:1}}return{pending:1}})}
+function recover(em){return api('/auth/v1/recover',{email:em})}
+function signOut(){return flush().catch(function(){}).then(function(){if(A){var t=A.at;api('/auth/v1/logout',{},t).catch(function(){})}ls('lockdown.settings',null);ls(AK,null);ls('zz.rl',null);A=null;location.reload()})}
 function sess(j,msg){setA(j);var had=ls('lockdown.settings.u.'+A.uid);
 return api('/rest/v1/rpc/load_progress',{},A.at).then(function(r){
 if(r&&r.data){applyServer(r)}else if(!had&&ls('lockdown.settings')){ls('lockdown.settings.u.'+A.uid,ls('lockdown.settings'));ls(dk(),'1')}
 ls('zz.rl','1');location.reload()},function(){ls('zz.rl','1');location.reload()})}
 return{
-on:on,now:now,call:function(p,b){return tok().then(function(t){return api(p,b||{},t)})},slot:slot,user:function(){return A},status:function(){return stat},halted:function(){return halted},boot:boot,
+acct:acct,email:function(){return A&&A.em||''},signUp:signUp,signIn:signIn,link:link,recover:recover,signOut:signOut,me:me,on:on,now:now,call:function(p,b){return tok().then(function(t){return api(p,b||{},t)})},slot:slot,user:function(){return A},status:function(){return stat},halted:function(){return halted},boot:boot,
 dirty:function(){if(!A||!on()||halted)return;ls(dk(),'1');if(busy)again=1;sched()},
 optout:function(){return ls('zz.optout')==='1'},
 enable:function(){ls('zz.optout',null);location.reload()},
@@ -6459,7 +6483,7 @@ $('stob').addEventListener('click',function(){shw('sto',0);shw('home',1);nameUI(
 var PAY_RETURN='https://thrustroyale.github.io/return.html';/* page that sends the player back into the app after paying; change it if your site address differs */
 var TKP=[{id:'t20',n:20,k:75000},{id:'t50',n:50,k:187500},{id:'t100',n:100,k:375000}],CNX=[{c:500,t:10},{c:1000,t:20},{c:5000,t:100}],CU={tab:'t',busy:0,wait:0,timer:0};
 function nairaF(k){var v=k/100;return'₦'+v.toLocaleString('en-US',v%1?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})}
-function cuEmail(){try{return localStorage.getItem('zz.email')||''}catch(e){return''}}
+function cuEmail(){var a=ZZA.email();if(a)return a;try{return localStorage.getItem('zz.email')||''}catch(e){return''}}
 function curMsg(m){$('curm').textContent=m||''}
 function curRender(){$('cuc').textContent=cfg.coins;$('cug').textContent=cfg.tk;
 $('curt').innerHTML='<button class="bt'+(CU.tab==='t'?' on':' alt')+'" data-ct="t">Buy Tickets</button><button class="bt'+(CU.tab==='c'?' on':' alt')+'" data-ct="c">Get Coins</button>';
@@ -6474,6 +6498,7 @@ function curOpen(tab){CU.tab=tab||'t';curMsg('');shw('home',0);shw('cur',1);curR
 function curBuy(id){var p=TKP.filter(function(z){return z.id===id})[0],e=$('cue'),em=((e&&e.value)||cuEmail()).trim();if(!p||CU.busy)return;
 if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){curMsg('Enter a valid email first. Paystack sends your receipt there.');return}
 try{localStorage.setItem('zz.email',em)}catch(_){}
+if(ZZA.on()&&ZZA.user()&&!ZZA.acct()){curMsg('Create an account to buy tickets.');accOpen('create','Create an account so your tickets stay safe and can be restored on any device.','cur');return}
 if(!ZZA.on()||!ZZA.user()){curMsg('Online save is not connected yet, so tickets cannot be added to your account. Check Settings > Basic, then try again.');return}
 CU.busy=1;curRender();curMsg('Opening secure checkout...');var w=null;try{w=window.open('about:blank','_blank')}catch(_){}
 var ret='';try{var NC=window.Capacitor;if(NC&&NC.isNativePlatform&&NC.isNativePlatform())ret=PAY_RETURN;else if(/^https?:$/.test(location.protocol)&&location.hostname!=='localhost')ret=location.origin+location.pathname}catch(_){}
@@ -6909,10 +6934,47 @@ if(u){btn.textContent='Delete online data';msg.textContent=ZZA.status()||'Anti-c
 else if(ZZA.optout()){btn.textContent='Turn on';msg.textContent='Off. Progress stays on this device only'}
 else{btn.classList.add('hide');msg.textContent=o?'Connecting...':'Progress is saved on this device'}}
 btn.addEventListener('click',function(){
-if(ZZA.user()){if(!confirm('Delete your online save? Your progress stays on this device, but online anti-cheat protection is turned off.'))return;msg.textContent='Deleting...';ZZA.del().catch(function(e){msg.textContent=e.msg||'Could not delete. Try again online.'})}
+if(ZZA.user()){if(!confirm(ZZA.acct()?'Delete your account and online save permanently? Your login will stop working and online protection is turned off.':'Delete your online save? Your progress stays on this device, but online anti-cheat protection is turned off.'))return;msg.textContent='Deleting...';ZZA.del().catch(function(e){msg.textContent=e.msg||'Could not delete. Try again online.'})}
 else if(ZZA.optout())ZZA.enable()});
 $('bset').addEventListener('click',paint);
 paint();ZZA.boot()})();
+/* ---------- accounts ---------- */
+var ACC={from:'',mode:'',busy:0};
+function accMsg(m){var e=$('accm');if(e)e.textContent=m||''}
+function accFirst(){try{if(!ZZA.on()||ZZA.acct()||localStorage.getItem('zz.welcomed'))return false}catch(e){return false}accOpen('welcome',null,'welcome');return true}
+function accDone(){try{localStorage.setItem('zz.welcomed','1')}catch(e){}shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur'){curRender()}else if(f==='welcome'){try{window.__tutAuto()}catch(e){}}}
+function accErr(e){var m=(e&&e.msg)||'Something went wrong. Try again.';if(/already.*regist|already.*exists/i.test(m))return'That email already has an account. Tap Sign in instead.';if(/invalid login/i.test(m))return'Wrong email or password.';if(/not confirmed/i.test(m))return'Confirm your email first. Check your inbox for the link.';if(/rate limit|too many|seconds/i.test(m))return'Too many tries. Wait a minute and try again.';if(/password.*(least|short|weak)/i.test(m))return'Password is too short. Use at least 8 characters.';return m}
+function accOpen(mode,msg,from){if(from!==undefined)ACC.from=from||'';
+ACC.mode=mode;var h='',g=!!ZZA.user()&&!ZZA.acct(),T={welcome:'Welcome',create:g?'Link account':'Create account',signin:'Sign in',forgot:'Reset password'};
+$('acct').textContent=T[mode]||'Account';
+if(mode==='welcome'){h='<p>Create an account to keep your progress safe, play on any device and buy tickets. You can also play as a guest and link an account later in Settings.</p><button class="bt" id="aw1">Create account</button><button class="bt alt" id="aw2">Sign in</button><button class="acl" id="aw3">Play as guest</button>'}
+else{h=(mode==='create'?'<p>'+(g?'Your current progress is kept and attached to this account.':'Your progress is saved to the account.')+'</p>':mode==='signin'?'<p>'+(g?'Signing in loads that account\'s progress. Your guest progress stays on this device only.':'Welcome back.')+'</p>':'<p>We email you a link to set a new password.</p>')+
+'<input id="aem" type="email" autocomplete="email" placeholder="Email" value="'+(ZZA.email()||cuEmail()).replace(/"/g,'')+'">'+(mode!=='forgot'?'<input id="apw" type="password" autocomplete="'+(mode==='create'?'new-password':'current-password')+'" placeholder="Password (8+ characters)">':'')+
+'<p id="accm"></p><button class="bt" id="ago">'+(mode==='create'?(g?'Link account':'Create account'):mode==='signin'?'Sign in':'Send reset link')+'</button>'+
+(mode==='create'?'<button class="acl" id="al1">I already have an account</button>':mode==='signin'?'<button class="acl" id="al2">Forgot password?</button><button class="acl" id="al3">Create an account instead</button>':'')+
+'<button class="acl" id="abk">'+(ACC.from==='welcome'?'Back':'Cancel')+'</button>'}
+$('accb').innerHTML=h;shw('acc',1);if(msg&&mode!=='welcome'){accMsg(msg)}
+var q=function(i,f){var e=$(i);if(e)e.addEventListener('click',f)};
+q('aw1',function(){accOpen('create')});q('aw2',function(){accOpen('signin')});q('aw3',accDone);
+q('al1',function(){accOpen('signin')});q('al2',function(){accOpen('forgot')});q('al3',function(){accOpen('create')});
+q('abk',function(){if(ACC.from==='welcome')accOpen('welcome');else{shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur')curRender()}});
+q('ago',accGo);var pw=$('apw');if(pw)pw.addEventListener('keydown',function(e){if(e.key==='Enter')accGo()})}
+function accGo(){if(ACC.busy)return;var em=($('aem').value||'').trim(),pe=$('apw'),pw=pe?pe.value:'',m=ACC.mode;
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){accMsg('Enter a valid email.');return}
+if(m!=='forgot'&&(m==='create'?pw.length<8:pw.length<1)){accMsg(m==='create'?'Use a password with at least 8 characters.':'Enter your password.');return}
+ACC.busy=1;accMsg('Please wait...');var b=$('ago');if(b)b.disabled=true;
+var pr=m==='create'?ZZA.link(em,pw):m==='signin'?ZZA.signIn(em,pw):ZZA.recover(em);
+pr.then(function(r){ACC.busy=0;try{localStorage.setItem('zz.email',em);localStorage.setItem('zz.welcomed','1')}catch(e){}
+if(m==='forgot'){accMsg('Reset link sent. Check your inbox.');if(b)b.disabled=false;return}
+if(r&&r.done){accPaint();var f=ACC.from;accDone();if(f==='cur')curMsg('Account linked. You can buy tickets now.')}
+else if(r&&r.pending){accMsg('We sent a confirmation link to '+em+'. Open it, then come back.');if(b)b.disabled=false}
+},function(e){ACC.busy=0;if(b)b.disabled=false;accMsg(accErr(e))})}
+function accPaint(){var m=$('amsg'),b=$('abtn');if(!m||!b)return;var on=ZZA.on();
+if(ZZA.acct()){m.textContent='Signed in as '+ZZA.email();b.textContent='Sign out'}
+else{m.textContent=on?'Guest. Link an account to protect your progress':'Accounts need an internet connection';b.textContent='Link account'}b.classList.toggle('hide',!on)}
+window.__accPaint=accPaint;
+$('abtn').addEventListener('click',function(){if(ZZA.acct()){if(!confirm('Sign out? Your progress is saved on your account. You will start as a new guest on this device until you sign in again.'))return;ZZA.signOut()}else accOpen('create',null,'')});
+$('bset').addEventListener('click',accPaint);accPaint();
 
 ['sbk','sbt'].forEach(function(i){$(i).addEventListener('click',function(){shw('set',0);nameUI();shw('home',1)})});
 $('sn').addEventListener('input',function(){cfg.name=$('sn').value.replace(/[<>]/g,'').slice(0,12);save();$('hn').textContent=pname()});
@@ -6999,7 +7061,7 @@ $('tutp').addEventListener('click',function(){tutShow(tutI-1)});
 $('tutn').addEventListener('click',function(){if(tutI>=TUTP.length-1)tutClose();else tutShow(tutI+1)});
 try{if(localStorage.getItem('zz_tut'))$('btut').classList.remove('pulse')}catch(e){}
 if($('stut'))$('stut').addEventListener('click',tutOpen);
-window.__tutAuto=function(){try{if(localStorage.getItem('zz_tut'))return}catch(e){return}var h=$('home');if(h&&!h.classList.contains('hide')&&mode!=='play')tutOpen()};
+window.__tutAuto=function(n){var h0=$('home');if(!(h0&&!h0.classList.contains('hide'))&&(n|0)<12&&ZZA.on()&&!ZZA.acct()){try{if(!localStorage.getItem('zz.welcomed')){setTimeout(function(){window.__tutAuto((n|0)+1)},500);return}}catch(e){}}if(accFirst())return;try{if(localStorage.getItem('zz_tut'))return}catch(e){return}var h=$('home');if(h&&!h.classList.contains('hide')&&mode!=='play')tutOpen()};
 
 var snN=0,SNC=0,SNF=1,snT=0,kfT=0,lastSn=0,inQ=0,psQ=0;function snap(){return{t:'s',tm:r3(t),
 a:A.map(function(a){var o={x:r3(a.x),y:r3(a.y),vx:r3(a.vx),vy:r3(a.vy),f:a.f,ang:r3(a.ang),hp:Math.round(a.hp*10)/10,ar:Math.round(a.ar||0),al:a.al,inv:r3(a.inv),heal:r3(a.heal),jet:a.jet?1:0,cl:a.cl||0,sl:r3(a.sl||0),sd:a.sd||0,g:a.g?1:0,fl:r3(a.fl),wp:a.wp,am:a.am,mg:a.mg,rl:r3(a.rl),hk:a.hk,wc:a.wc,k:a.k,rs:r3(a.rs||0),dn:a.dn?1:0,cf:a.cf?1:0};
