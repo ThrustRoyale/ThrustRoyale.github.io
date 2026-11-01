@@ -6479,7 +6479,7 @@ else if(t==='p'){var p2=PTS.filter(function(z){return z.id===b.dataset.i})[0];if
 else{var h2=HWS.concat(SHS).filter(function(z){return z.id===b.dataset.i})[0];if(!h2||cfg.ow[h2.id]||cfg.coins<h2.c)return;cfg.coins-=h2.c;cfg.ow[h2.id]=true;if(h2.id==='neon')cfg.sh='neon';else cfg.hw=h2.id;m=h2.n+' bought and equipped!'}
 save();nameUI();stoRender();$('stm').textContent=m});
 $('stob').addEventListener('click',function(){shw('sto',0);shw('home',1);nameUI()});
-/* ===== Currencies: buy tickets with real money (Paystack, via Supabase), swap tickets for coins ===== */
+/* ===== Currencies: buy tickets with real money (Flutterwave, via Supabase), swap tickets for coins ===== */
 var PAY_RETURN='https://thrustroyale.github.io/return.html';/* page that sends the player back into the app after paying; change it if your site address differs */
 var TKP=[{id:'t20',n:20,k:75000},{id:'t50',n:50,k:187500},{id:'t100',n:100,k:375000}],CNX=[{c:500,t:10},{c:1000,t:20},{c:5000,t:100}],CU={tab:'t',busy:0,wait:0,timer:0};
 function nairaF(k){var v=k/100;return'₦'+v.toLocaleString('en-US',v%1?{minimumFractionDigits:2,maximumFractionDigits:2}:{maximumFractionDigits:0})}
@@ -6488,7 +6488,7 @@ function curMsg(m){$('curm').textContent=m||''}
 function curRender(){$('cuc').textContent=cfg.coins;$('cug').textContent=cfg.tk;
 $('curt').innerHTML='<button class="bt'+(CU.tab==='t'?' on':' alt')+'" data-ct="t">Buy Tickets</button><button class="bt'+(CU.tab==='c'?' on':' alt')+'" data-ct="c">Get Coins</button>';
 var h='';
-if(CU.tab==='t'){h+='<p class="cun">Pay with card, bank transfer or USSD through Paystack. Tickets are added to your account automatically.</p><input id="cue" type="email" autocomplete="email" placeholder="Your email (for the payment receipt)" value="'+cuEmail().replace(/"/g,'')+'"><div class="cpg">';
+if(CU.tab==='t'){h+='<p class="cun">Pay with card, bank transfer or USSD through Flutterwave. Tickets are added to your account automatically.</p><input id="cue" type="email" autocomplete="email" placeholder="Your email (for the payment receipt)" value="'+cuEmail().replace(/"/g,'')+'"><div class="cpg">';
 TKP.forEach(function(p){h+='<div class="cpk"><b>'+p.n+' <i class="gm"></i></b><small>'+nairaF(p.k/p.n)+' per ticket</small><button class="bt" data-buy="'+p.id+'"'+(CU.busy?' disabled':'')+'>'+nairaF(p.k)+'</button></div>'});h+='</div>'}
 else{h+='<p class="cun">Swap tickets for coins. 10 tickets = 500 coins.</p><div class="cpg">';
 CNX.forEach(function(x,i){h+='<div class="cpk"><b>'+x.c.toLocaleString('en-US')+' <i class="zc"></i></b><small>for '+x.t+' tickets</small><button class="bt" data-ex="'+i+'"'+(cfg.tk<x.t?' disabled':'')+'><i class="gm"></i> '+x.t+'</button></div>'});h+='</div>';
@@ -6496,13 +6496,13 @@ if(cfg.tk<CNX[0].t)h+='<p class="cun">You need more tickets. Tap Buy Tickets to 
 $('curl').innerHTML=h;var e=$('cue');if(e)e.addEventListener('input',function(){try{localStorage.setItem('zz.email',e.value.trim())}catch(_){}})}
 function curOpen(tab){CU.tab=tab||'t';curMsg('');shw('home',0);shw('cur',1);curRender();curSync()}
 function curBuy(id){var p=TKP.filter(function(z){return z.id===id})[0],e=$('cue'),em=((e&&e.value)||cuEmail()).trim();if(!p||CU.busy)return;
-if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){curMsg('Enter a valid email first. Paystack sends your receipt there.');return}
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){curMsg('Enter a valid email first. Flutterwave sends your receipt there.');return}
 try{localStorage.setItem('zz.email',em)}catch(_){}
 if(ZZA.on()&&ZZA.user()&&!ZZA.acct()){curMsg('Create an account to buy tickets.');accOpen('create','Create an account so your tickets stay safe and can be restored on any device.','cur');return}
 if(!ZZA.on()||!ZZA.user()){curMsg('Online save is not connected yet, so tickets cannot be added to your account. Check Settings > Basic, then try again.');return}
 CU.busy=1;curRender();curMsg('Opening secure checkout...');var w=null;try{w=window.open('about:blank','_blank')}catch(_){}
 var ret='';try{var NC=window.Capacitor;if(NC&&NC.isNativePlatform&&NC.isNativePlatform())ret=PAY_RETURN;else if(/^https?:$/.test(location.protocol)&&location.hostname!=='localhost')ret=location.origin+location.pathname}catch(_){}
-ZZA.call('/functions/v1/paystack-init',{pack:id,email:em,return_url:ret}).then(function(r){CU.busy=0;if(!r||!r.url)throw{msg:'No checkout link received'};
+ZZA.call('/functions/v1/flutterwave-init',{pack:id,email:em,return_url:ret}).then(function(r){CU.busy=0;if(!r||!r.url)throw{msg:'No checkout link received'};
 if(w&&!w.closed)w.location.href=r.url;else location.href=r.url;
 curRender();curMsg('Finish paying in the checkout page, then come back here. Your tickets are added automatically.');curWatch()}).catch(function(err){CU.busy=0;try{if(w)w.close()}catch(_){}curRender();curMsg('Could not start the payment: '+((err&&err.msg)||'please try again')+'.')})}
 function curWatch(){CU.wait=Date.now()+900000;clearInterval(CU.timer);CU.timer=setInterval(function(){if(Date.now()>CU.wait){clearInterval(CU.timer);return}curSync()},5000)}

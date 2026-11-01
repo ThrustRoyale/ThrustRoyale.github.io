@@ -1,6 +1,6 @@
 /* Thrust Royale service worker: makes the game load offline.
    Bump V whenever you ship a new version so players get fresh files. */
-const V = 'zz-v56';
+const V = 'zz-v57';
 const SHELL = ['./', './Royale.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
   './icons/maskable-512.png', './icons/apple-touch-icon.png', './fonts/chakra-petch-500.woff2', './fonts/chakra-petch-700.woff2'];
 
