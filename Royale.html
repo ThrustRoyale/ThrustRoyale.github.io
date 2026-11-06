@@ -2933,7 +2933,7 @@ A.forEach(function(a){if(!a)return;if(a.off&&!(a.k|0)&&!(a.dm|0)&&!(a.ds|0))retu
 return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY TEAM':'OTHER PLAYERS','e',en):'')}
 var rord=[0,1,2];
 /* ===== In-app update (Android app only): when a newer version is published, show a required-update screen ===== */
-var GAME_VER='1.0.2';
+var GAME_VER='1.0.3';
 try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings · v'+GAME_VER}catch(_e){}
 (function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.CapacitorUpdater}catch(_){return}
 if(!U)return;try{U.notifyAppReady()}catch(_){}
@@ -2954,7 +2954,7 @@ try{U.addListener('download',function(e){if(e&&e.percent!=null){setp(e.percent);
 U.download({url:nv.url,version:String(nv.version)}).then(function(b){setp(100);g('updm').textContent='Installing update...';return U.set({id:b.id})}).catch(function(e){busy=0;g('updb').style.display='none';g('updbt').style.display='flex';g('updgo').textContent='Retry';g('updm').textContent='Update failed: '+((e&&(e.message||e.errorMessage))||String(e))+'. Check your connection and try again.'})}
 function chk(){var ac=window.AbortController?new AbortController():null,t=setTimeout(function(){try{ac&&ac.abort()}catch(_){}},8000);
 fetch('https://thrustroyale.github.io/version.json?'+Date.now(),{cache:'no-store',signal:ac?ac.signal:undefined}).then(function(r){return r.json()}).then(function(v){clearTimeout(t);
-if(!v||!v.version||!v.url||!/^https:\/\/github\.com\/ThrustRoyale\//.test(v.url)||!gt(v.version,GAME_VER))return;ui(v)}).catch(function(){clearTimeout(t)})}
+if(!v||!v.version||!v.url||!/^https:\/\/(github\.com\/ThrustRoyale\/|thrustroyale\.github\.io\/)/.test(v.url)||!gt(v.version,GAME_VER))return;ui(v)}).catch(function(){clearTimeout(t)})}
 chk()})();
 function oname(){return NET?(peerName||'Opponent'):'Bot'}
 function endMP(mk,ok,why){var k=mk>ok?'win':mk<ok?'lose':'draw';result(k,k==='win'?'VICTORY':k==='lose'?'DEFEAT':'DRAW',why==='time'?"Time's up":'First to 10 eliminations',sc(mk,pname(),1)+'<div class="vs">VS</div>'+sc(ok,oname()))}
