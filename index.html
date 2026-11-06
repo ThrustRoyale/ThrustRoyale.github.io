@@ -6,6 +6,7 @@
 <title>Thrust Royale – Fast 2D Battle Royale for Android and PC</title>
 <meta name="description" content="Thrust Royale is a fast 2D side-view battle royale and shooter for Android. Free to download.">
 <link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
 <style>
 :root{--bg:#0d0a14;--fg:#ecedf3;--mut:#a3a7b6;--ac:#ffb703;--ac2:#ff6b2c;--card:#1a1426;--line:rgba(255,255,255,.1)}
 *{box-sizing:border-box}
@@ -27,8 +28,9 @@ li{margin:8px 0}
 .grid span{color:var(--mut);font-size:14px}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:14px;text-align:center}
 a{color:var(--ac)}
-.btn.alt{background:transparent;color:var(--ac);border:2px solid var(--ac);margin:0 0 0 8px;padding:13px 30px}
-@media (max-width:520px){.btn.alt{margin:12px 0 0}}
+button.btn{font-family:inherit;cursor:pointer;border:0}
+.plat{margin:18px 0}.lbl{margin:0 0 8px;color:var(--mut);font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.btn.alt{background:transparent;color:var(--ac);border:2px solid var(--ac);margin:0;padding:13px 30px}
 </style>
 </head>
 <body>
@@ -38,9 +40,13 @@ a{color:var(--ac)}
 <img src="icon-512.png" alt="Thrust Royale icon">
 <h1>THRUST ROYALE</h1>
 <p class="tag">A fast 2D side-view battle royale and shooter for Android and PC.</p>
-<a class="btn" href="https://github.com/ThrustRoyale/ThrustRoyale.github.io/releases/download/1.0.0/ThrustRoyale.apk">Download APK</a>
-<a class="btn alt" href="Royale.html">Play in browser</a>
-<p class="small">Free · Android app and web version for PC · Version 1.0</p>
+<div class="plat"><p class="lbl">For Android</p>
+<a class="btn" href="https://github.com/ThrustRoyale/ThrustRoyale.github.io/releases/download/1.0.0/ThrustRoyale.apk">Download APK</a></div>
+<div class="plat"><p class="lbl">For PC</p>
+<button class="btn" id="inst" type="button">Download web version</button>
+<p class="small" id="insth" hidden>To install: open <b>Play in browser</b>, then click the install icon in the address bar (Chrome or Edge).</p>
+<p><a class="btn alt" href="Royale.html">Play in browser</a></p></div>
+<p class="small">Free · Version 1.0</p>
 </section>
 
 <h2>What you get</h2>
@@ -79,5 +85,11 @@ a{color:var(--ac)}
 </footer>
 
 </main>
+<script>
+(function(){var dp=null,b=document.getElementById('inst'),h=document.getElementById('insth');
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e});
+b.addEventListener('click',function(){if(dp){dp.prompt();dp.userChoice.finally(function(){dp=null});return}h.hidden=false});
+window.addEventListener('appinstalled',function(){h.hidden=true;b.textContent='Installed'})})();
+</script>
 </body>
 </html>
