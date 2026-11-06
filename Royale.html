@@ -2934,6 +2934,7 @@ return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY T
 var rord=[0,1,2];
 /* ===== In-app update (Android app only): downloads new game files in the background and applies them next launch ===== */
 var GAME_VER='1.0.1';
+try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings \u00B7 v'+GAME_VER}catch(_e){}
 (function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.CapacitorUpdater}catch(_){return}
 if(!U)return;try{U.notifyAppReady()}catch(_){}
 function gt(a,b){var x=String(a).split('.'),y=String(b).split('.');for(var i=0;i<3;i++){var p=+x[i]||0,q=+y[i]||0;if(p!==q)return p>q}return false}
