@@ -1,0 +1,34 @@
+name: Publish web update
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "New game version, e.g. 1.0.1 (must match GAME_VER in Royale.html)"
+        required: true
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      V: ${{ inputs.version }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the version matches the game file
+        run: grep -q "var GAME_VER='$V'" Royale.html
+      - name: Build the update zip
+        run: |
+          python3 prepare_www.py
+          cd www && zip -r ../www.zip . && cd ..
+      - name: Create the release
+        run: gh release create "web-$V" www.zip --title "Web update $V" --notes "Over-the-air game update"
+      - name: Point version.json at it
+        run: |
+          printf '{"version":"%s","url":"https://github.com/%s/releases/download/web-%s/www.zip"}\n' "$V" "${{ github.repository }}" "$V" > version.json
+          git config user.name github-actions
+          git config user.email actions@github.com
+          git add version.json
+          git commit -m "Web update $V"
+          git push
+          
