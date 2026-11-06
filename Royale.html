@@ -241,6 +241,9 @@ border:2px solid rgba(43,45,66,.55);background:rgba(255,255,255,.45);color:var(-
 .bt:active{transform:scale(.96)}
 .bt.alt{background:rgba(255,255,255,.16);color:#fff;border:2px solid rgba(255,255,255,.4)}
 #mm{margin-top:12px}
+#menu.pzm #go,#cw,#pst,#mm,#qt{box-sizing:border-box;width:190px;height:36px;margin-top:8px;font-size:15px;line-height:1;padding:0 12px;border-radius:12px}
+#menu.pzm #go{border:2px solid transparent}
+#qt{border-color:rgba(255,110,110,.8);color:#ff9a9a}
 #home{overflow:hidden;background:linear-gradient(180deg,#140e38 0%,#3d2060 36%,#b83f6a 68%,#ff9a5a 100%)}
 #cw{margin-top:12px}
 #ws,#ts{align-items:center;justify-content:center;overflow:auto;padding:10px 14px}
@@ -1142,7 +1145,7 @@ s.addEventListener('pointerdown',function(e){e.stopPropagation();e.preventDefaul
 <div id="scb"><div class="tm" id="sbb0"><b id="sbs0">0</b><span id="sbl0">BLUE</span></div><div id="sbm"><div id="sbtm"></div><div id="sbr"></div></div><div class="tm" id="sbb1"><b id="sbs1">0</b><span id="sbl1">RED</span></div></div>
 <div id="rcd" class="hide"></div><div id="rbig"></div>
 <div id="vp" class="hide"><b id="vph"></b><div id="vpl"></div></div>
-<div id="menu" class="hide"><h1 id="t">Thrust Royale</h1><p id="tp">10 players are dropped into a skyline of towers. Last one standing wins. Left stick runs, and pushing it down drops through a floor. Right stick aims and fires. Tap the yellow button to jump, hold it in the air for the jetpack, or hold it against a wall to wall run for a fraction of the fuel. Tap the green button to slide for a speed boost (finish a slide and stand back up before sliding again). Grab guns, health and throwables, and stay inside the closing zone. Tap the purple button to reload. Tap a throwable square at the bottom to ready it, then drag the right stick to aim (red line) and release to throw. Pick the medkit square and the right stick becomes a heal button. Stand on a pickup and tap its small square to take, replace or switch.</p><button id="go">Start</button><button class="bt alt" id="cw">Change weapon</button><button class="bt alt hide" id="pst">Settings</button><button class="bt alt" id="mm">Main menu</button></div>
+<div id="menu" class="hide"><h1 id="t">Thrust Royale</h1><p id="tp">10 players are dropped into a skyline of towers. Last one standing wins. Left stick runs, and pushing it down drops through a floor. Right stick aims and fires. Tap the yellow button to jump, hold it in the air for the jetpack, or hold it against a wall to wall run for a fraction of the fuel. Tap the green button to slide for a speed boost (finish a slide and stand back up before sliding again). Grab guns, health and throwables, and stay inside the closing zone. Tap the purple button to reload. Tap a throwable square at the bottom to ready it, then drag the right stick to aim (red line) and release to throw. Pick the medkit square and the right stick becomes a heal button. Stand on a pickup and tap its small square to take, replace or switch.</p><button id="go">Start</button><button class="bt alt" id="cw">Change weapon</button><button class="bt alt hide" id="pst">Settings</button><button class="bt alt" id="mm">Main menu</button><button class="bt alt hide" id="qt">Quit match</button></div>
 <div class="ov hide" id="abs"><div class="wsw"><h2>Choose your ability</h2><p id="abss"></p><div id="abcards"></div><div class="wbt"><button class="bt alt vback" id="abback" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><button class="bt" id="abgo">Lock in</button></div></div></div>
 <div class="ov hide" id="ws"><div class="wsw"><h2>Choose your weapon</h2><p id="wss"></p><div id="wcards"></div><div class="wbt"><button class="bt alt vback" id="wback" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><button class="bt" id="wgo">Start</button></div></div></div>
 <div class="ov hide" id="ts"><div class="wsw"><h2>Choose two throwables</h2><p id="tss"></p><div id="tcards"></div><div class="wbt"><button class="bt alt vback" id="tback" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><button class="bt" id="tgo">Start</button></div></div></div>
@@ -2852,7 +2855,7 @@ else{cx.fillStyle='#8d99ae';rr(cx,-K*.06,-K*.18,K*.12,K*.36,K*.06);cx.fill();cx.
 cx.fillStyle='#c1121f';for(var j=0;j<g.b.length;j++){var bb=g.b[j];cx.beginPath();cx.arc(bb[0]*K,bb[1]*K,bb[2]*K,0,6.2832);cx.fill()}
 cx.restore()}cx.globalAlpha=1}
 function spark(x,y,c,n){try{if(n===24&&c==='#ffb703')SFX.boom(x,y);else if(n===70&&c==='#ffb703')SFX.bigBoom(x,y);else if(n===10&&c==='#8ac926')SFX.hiss(x,y,'gas');else if(n===10&&c==='#ced4da')SFX.hiss(x,y,'smoke')}catch(e){}if(NET==='host')evq.push(['s',Math.round(x*100)/100,Math.round(y*100)/100,c,n]);var nn=gLow()?Math.ceil(n*.5):n;for(var i=0;i<nn;i++){var a=Math.random()*6.283,v=2+Math.random()*5;fx.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:.4,c:c})}}
-function show(a,b,c){$('cw').classList.toggle('hide',!(a==='Paused'&&DL()&&!NET&&!DSN));$('pst').classList.toggle('hide',a!=='Paused');$('t').textContent=a;$('tp').textContent=b;$('go').textContent=c;$('menu').classList.remove('hide')}
+function show(a,b,c){$('cw').classList.toggle('hide',!(a==='Paused'&&DL()&&!NET&&!DSN));$('pst').classList.toggle('hide',a!=='Paused');$('qt').classList.toggle('hide',!(a==='Paused'&&gm!=='train'));$('menu').classList.toggle('pzm',a==='Paused');if(a==='Paused')c='Resume';$('t').textContent=a;$('tp').textContent=b;$('go').textContent=c;$('menu').classList.remove('hide')}
 function respawn(a){var en=A.filter(function(o){return o!==a&&o.al&&!isTm(o,a)}),sp=null;
 for(var n=0;n<60;n++){var c=spot();if(en.every(function(o){return Math.hypot(c.x-o.x,c.y-o.y)>=(gm==='tdm'?12:16)})||n>=50){sp=c;break}}
 if(gm==='ball'){sp=ballSpawn(a);a.bzP=null;a.bzB=null;a.hs=null}a.x=sp.x;a.y=sp.y;a.vx=0;a.vy=0;a.hp=200;a.ar=0;a.wp='pistol';a.am=0;a.mg=0;a.rl=0;a.sv=null;a.wc=0;a.cd=0;a.fuel=1;a.g=0;a.dr=0;a.jb=0;a.sl=0;a.sq=0;a.tg=null;a.fl=0;a.inv=2;a.al=1;
@@ -2934,7 +2937,7 @@ A.forEach(function(a){if(!a)return;if(a.off&&!(a.k|0)&&!(a.dm|0)&&!(a.ds|0))retu
 return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY TEAM':'OTHER PLAYERS','e',en):'')}
 var rord=[0,1,2];
 /* ===== In-app update (Android app only): when a newer version is published, show a required-update screen ===== */
-var GAME_VER='1.0.3';
+var GAME_VER='1.0.4';
 try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings · v'+GAME_VER}catch(_e){}
 (function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.LiveUpdate}catch(_){return}
 if(!U)return;try{U.ready().catch(function(){})}catch(_){}
@@ -7250,6 +7253,8 @@ Array.prototype.forEach.call(box.children,function(b){b.classList.toggle('on',b.
 $('m-map').addEventListener('click',function(e){e.stopPropagation();mapDuo=false;shw('modes',0);buildMapSel();shw('mapsel',1)});
 $('mapb').addEventListener('click',function(){shw('mapsel',0);shw('modes',1);modeTab(0)});
 $('pz').addEventListener('click',function(){if(mode==='play'){if(NET){show('Paused','The match keeps running while this menu is open.','Resume');return}mode='menu';pauseShow()}});
+function qtPen(){if(RKDEV)return 0;var v=null;try{v=localStorage.getItem(rkKey())}catch(e){}if(!v)return 0;var pv=0;try{pv=JSON.parse(v).pv?1:0}catch(e){}var LD=rkL(pv);return 10+(pv?cfg[LD.k]:cfg[LD.k]*2)}
+var qtT=0;$('qt').addEventListener('click',function(){var b=this;if(!qtT){var p=qtPen();qtT=setTimeout(function(){qtT=0;b.textContent='Quit match'},4000);b.textContent=p?'Tap again to quit: -'+p+' rank':'Tap again to quit';return}clearTimeout(qtT);qtT=0;b.textContent='Quit match';try{rkQuit()}catch(e){}$('mm').click()});
 $('mm').addEventListener('click',function(){dsAbandon();plAbandon();netClose();mode='menu';shw('menu',0);shw('modes',0);nameUI();shw('home',1)});
 $('bset').addEventListener('click',function(){shw('home',0);shw('set',1);setTab('b')});$('setn').addEventListener('click',function(e){var b=e.target.closest?e.target.closest('.setb'):null;if(b)setTab(b.dataset.p)});
 /* online save (anonymous, anti-cheat) */
