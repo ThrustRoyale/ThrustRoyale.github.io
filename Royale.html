@@ -491,20 +491,16 @@ padding:calc(env(safe-area-inset-top,0px) + 10px) calc(env(safe-area-inset-right
 #lbr #modeb{display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;font-size:15px;padding:11px 16px;border-radius:12px;background:rgba(18,12,40,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 #lbr #modeb::after{content:"\25BE";flex:none}
 #lbr #start{font-size:30px;padding:15px 20px;letter-spacing:.1em;text-transform:uppercase;border-radius:14px;animation:lbgl 2s ease-in-out infinite}
-#mst{z-index:75;align-items:center;justify-content:center}
-#mst .mstw{width:min(640px,94vw);max-height:94vh;display:flex;flex-direction:column;gap:8px;padding:10px 6px;box-sizing:border-box}
-#mst .wbt{position:absolute;right:calc(env(safe-area-inset-right,0px) + 18px);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);margin:0}
-#mst h2{margin:0;text-align:center;font-size:24px;letter-spacing:.06em}
-#mstb{overflow:auto;display:flex;flex-direction:column;gap:10px;max-height:68vh}
-#mstb table{width:100%;border-collapse:collapse;font:600 14px "Chakra Petch",system-ui,sans-serif;background:rgba(18,12,40,.7);border-radius:10px;overflow:hidden}
-#mstb caption{caption-side:top;text-align:left;padding:5px 10px;font-weight:800;letter-spacing:.1em;font-size:14px}
-#mstb caption.a{background:#1d4e89;color:#bfe6ff}#mstb caption.e{background:#8f1d1d;color:#ffd0d0}
-#mstb th{font-size:11px;letter-spacing:.08em;color:#a9b4ca;text-align:right;padding:4px 8px}
-#mstb th:first-child,#mstb td:first-child{text-align:left}
-#mstb td{padding:5px 8px;text-align:right;border-top:1px solid rgba(255,255,255,.08)}
-#mstb td:first-child{max-width:40vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#mstb tr.me td{background:rgba(255,209,102,.18);color:#ffd166}
-@media (max-height:420px){#mst h2{font-size:18px}#mstb{max-height:58vh}#mstb td{padding:3px 8px;font-size:13px}}
+#rsb{overflow:auto;display:flex;flex-direction:column;gap:10px;max-height:62vh;width:min(640px,94vw);margin-top:4px}
+#rsb table{width:100%;border-collapse:collapse;font:600 14px "Chakra Petch",system-ui,sans-serif;background:rgba(18,12,40,.7);border-radius:10px;overflow:hidden}
+#rsb caption{caption-side:top;text-align:left;padding:5px 10px;font-weight:800;letter-spacing:.1em;font-size:14px}
+#rsb caption.a{background:#1d4e89;color:#bfe6ff}#rsb caption.e{background:#8f1d1d;color:#ffd0d0}
+#rsb th{font-size:11px;letter-spacing:.08em;color:#a9b4ca;text-align:right;padding:4px 8px}
+#rsb th:first-child,#rsb td:first-child{text-align:left}
+#rsb td{padding:5px 8px;text-align:right;border-top:1px solid rgba(255,255,255,.08)}
+#rsb td:first-child{max-width:40vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#rsb tr.me td{background:rgba(255,209,102,.18);color:#ffd166}
+@media (max-height:420px){#rsb{max-height:58vh}#rsb td{padding:3px 8px;font-size:13px}}
 #lstoast{position:absolute;left:50%;top:calc(env(safe-area-inset-top,0px) + 22px);transform:translateX(-50%);padding:9px 18px;border-radius:20px;background:rgba(18,12,40,.88);border:1.5px solid var(--gold);color:#fff;font:700 15px "Chakra Petch",system-ui,sans-serif;white-space:nowrap}
 @media (max-height:420px){#lcol{gap:7px;width:248px}#pcard{padding:7px 10px;gap:5px}#pav{width:38px;height:38px;font-size:20px}#hn{font-size:17px}#lnav{gap:6px}#lnav button{font-size:15px;padding:6px 12px}#lbr #start{font-size:24px;padding:12px 16px}#lbr #modeb{padding:9px 14px;font-size:14px}}
 
@@ -1145,13 +1141,12 @@ s.addEventListener('pointerdown',function(e){e.stopPropagation();e.preventDefaul
 <div id="scb"><div class="tm" id="sbb0"><b id="sbs0">0</b><span id="sbl0">BLUE</span></div><div id="sbm"><div id="sbtm"></div><div id="sbr"></div></div><div class="tm" id="sbb1"><b id="sbs1">0</b><span id="sbl1">RED</span></div></div>
 <div id="rcd" class="hide"></div><div id="rbig"></div>
 <div id="vp" class="hide"><b id="vph"></b><div id="vpl"></div></div>
-<div id="menu" class="hide"><h1 id="t">Thrust Royale</h1><p id="tp">10 players are dropped into a skyline of towers. Last one standing wins. Left stick runs, and pushing it down drops through a floor. Right stick aims and fires. Tap the yellow button to jump, hold it in the air for the jetpack, or hold it against a wall to wall run for a fraction of the fuel. Tap the green button to slide for a speed boost (finish a slide and stand back up before sliding again). Grab guns, health and throwables, and stay inside the closing zone. Tap the purple button to reload. Tap a throwable square at the bottom to ready it, then drag the right stick to aim (red line) and release to throw. Pick the medkit square and the right stick becomes a heal button. Stand on a pickup and tap its small square to take, replace or switch.</p><button id="go">Start</button><button class="bt alt" id="cw">Change weapon</button><button class="bt alt" id="mm">Main menu</button></div>
+<div id="menu" class="hide"><h1 id="t">Thrust Royale</h1><p id="tp">10 players are dropped into a skyline of towers. Last one standing wins. Left stick runs, and pushing it down drops through a floor. Right stick aims and fires. Tap the yellow button to jump, hold it in the air for the jetpack, or hold it against a wall to wall run for a fraction of the fuel. Tap the green button to slide for a speed boost (finish a slide and stand back up before sliding again). Grab guns, health and throwables, and stay inside the closing zone. Tap the purple button to reload. Tap a throwable square at the bottom to ready it, then drag the right stick to aim (red line) and release to throw. Pick the medkit square and the right stick becomes a heal button. Stand on a pickup and tap its small square to take, replace or switch.</p><button id="go">Start</button><button class="bt alt" id="cw">Change weapon</button><button class="bt alt hide" id="pst">Settings</button><button class="bt alt" id="mm">Main menu</button></div>
 <div class="ov hide" id="abs"><div class="wsw"><h2>Choose your ability</h2><p id="abss"></p><div id="abcards"></div><div class="wbt"><button class="bt alt vback" id="abback" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><button class="bt" id="abgo">Lock in</button></div></div></div>
 <div class="ov hide" id="ws"><div class="wsw"><h2>Choose your weapon</h2><p id="wss"></p><div id="wcards"></div><div class="wbt"><button class="bt alt vback" id="wback" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><button class="bt" id="wgo">Start</button></div></div></div>
 <div class="ov hide" id="ts"><div class="wsw"><h2>Choose two throwables</h2><p id="tss"></p><div id="tcards"></div><div class="wbt"><button class="bt alt vback" id="tback" aria-label="Back"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="display:block;pointer-events:none"><path d="M20 12H4M10.5 5.5L4 12l6.5 6.5"/></svg></button><button class="bt" id="tgo">Start</button></div></div></div>
-<div class="ov hide" id="mst"><div class="mstw"><h2>Match stats</h2><div id="mstb"></div><div class="wbt"><button class="bt" id="mstc">Continue</button></div></div></div>
-<div class="ov hide" id="res"><div id="cf" class="s0"></div><div id="rb" class="s0"><span id="rt"></span></div><p id="rs" class="s0"></p><div class="cap s1" id="rcap">Eliminations</div><div id="rk" class="s1"></div><div id="rcoin" class="s1"></div><div id="rrk" class="s2"></div><button class="bt hide" id="rad"><span class="adi">📺</span> Watch ad <i class="zc"></i> +30</button>
-<div id="rbt"><button class="bt alt" id="rst2">Stats</button><button class="bt alt" id="rp">Play again</button><button class="bt" id="rn">Next</button><button class="bt alt" id="rm">Main menu</button></div></div>
+<div class="ov hide" id="res"><div id="cf" class="s0"></div><div id="rb" class="s0"><span id="rt"></span></div><p id="rs" class="s0"></p><div class="cap s1" id="rcap">Eliminations</div><div id="rk" class="s1"></div><div id="rcoin" class="s1"></div><div id="rrk" class="s2"></div><div class="cap s3" id="rscap">Match stats</div><div id="rsb" class="s3"></div><button class="bt hide" id="rad"><span class="adi">📺</span> Watch ad <i class="zc"></i> +30</button>
+<div id="rbt"><button class="bt alt" id="rp">Play again</button><button class="bt" id="rn">Next</button><button class="bt alt" id="rm">Main menu</button></div></div>
 <div class="ov" id="home"><div id="lbg"><i class="stars"></i><i class="sun"></i><i class="beam"></i><i class="beam b2"></i><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice"><defs><pattern id="lbwn" width="14" height="16" patternUnits="userSpaceOnUse"><rect x="4" y="5" width="5" height="7" fill="#ffd98a"/></pattern><clipPath id="lcb"><rect x="0" y="150" width="90" height="150"/><rect x="80" y="110" width="70" height="190"/><rect x="150" y="170" width="80" height="130"/><rect x="225" y="90" width="60" height="210"/><rect x="285" y="140" width="100" height="160"/><rect x="380" y="120" width="70" height="180"/><rect x="445" y="170" width="90" height="130"/><rect x="530" y="100" width="65" height="200"/><rect x="590" y="150" width="95" height="150"/><rect x="680" y="115" width="80" height="185"/><rect x="755" y="165" width="85" height="135"/><rect x="835" y="95" width="70" height="205"/><rect x="900" y="140" width="100" height="160"/><rect x="995" y="120" width="80" height="180"/><rect x="1070" y="160" width="70" height="140"/><rect x="1135" y="105" width="65" height="195"/></clipPath><clipPath id="lcf"><rect x="30" y="200" width="110" height="100"/><rect x="135" y="170" width="80" height="130"/><rect x="215" y="215" width="100" height="85"/><rect x="310" y="185" width="70" height="115"/><rect x="380" y="225" width="120" height="75"/><rect x="495" y="175" width="85" height="125"/><rect x="580" y="210" width="110" height="90"/><rect x="685" y="180" width="75" height="120"/><rect x="760" y="220" width="105" height="80"/><rect x="860" y="190" width="90" height="110"/><rect x="950" y="215" width="95" height="85"/><rect x="1040" y="175" width="80" height="125"/><rect x="1115" y="205" width="85" height="95"/></clipPath></defs><rect width="1200" height="300" fill="#3b2d63" clip-path="url(#lcb)"/><rect width="1200" height="300" fill="url(#lbwn)" opacity=".45" clip-path="url(#lcb)"/><rect width="1200" height="300" fill="#1b1534" clip-path="url(#lcf)"/><rect width="1200" height="300" fill="url(#lbwn)" opacity=".3" clip-path="url(#lcf)"/></svg><i class="floor"></i><i class="cone"></i><div class="stage"><i class="pl"></i><i class="rg"></i><i class="rg r2"></i></div><i class="em" style="left:30%;animation-delay:-0s;animation-duration:7s"></i><i class="em" style="left:42%;animation-delay:-3s;animation-duration:8s"></i><i class="em" style="left:55%;animation-delay:-5s;animation-duration:6s"></i><i class="em" style="left:63%;animation-delay:-1s;animation-duration:9s"></i><i class="em" style="left:72%;animation-delay:-4s;animation-duration:7s"></i><i class="em" style="left:36%;animation-delay:-6s;animation-duration:8s"></i></div>
 <button class="gear pulse" id="btut" aria-label="How to play" style="z-index:3">?</button><button class="gear" id="bset" aria-label="Settings">&#9881;&#xFE0E;</button>
 <div id="pcur"><span><i class="zc"></i> <b id="hc">0</b><button class="cplus" data-cur="c" aria-label="Get coins">+</button></span><span><i class="gm"></i> <b id="hg">0</b><button class="cplus" data-cur="t" aria-label="Get tickets">+</button></span></div><div id="lcol"><div id="pcard"><div id="ptop"><div id="pav"></div><div id="pin"><b id="hn"></b></div></div><div id="rkb"><span id="rkbd"></span><b id="rkn"></b><div class="rkbar"><i id="rkf"></i></div><span id="rkx"></span></div><div id="rkse" class="sea"></div></div>
@@ -1424,7 +1419,7 @@ cx.fillStyle='#2b2d42';cx.beginPath();cx.ellipse(gx,gy+T*.2,T*.4,T*.13,0,0,6.283
 cx.strokeStyle='#e0c3ff';cx.lineWidth=2.5;for(var gj=0;gj<2;gj++){cx.beginPath();cx.ellipse(gx,gy,T*(.32+gj*.14),T*(.12+gj*.06),tm/(380+gj*200),0,6.2832);cx.stroke()}
 cx.fillStyle=d.hit>0?'#fff':'#9b5de5';cx.strokeStyle='#2b2d42';cx.lineWidth=2;cx.beginPath();cx.arc(gx,gy,T*.2,0,6.2832);cx.fill();cx.stroke();cx.restore()}
 else{var qx=d.x*T-cam.x,qy=d.y*T-cam.y;if(qx<-T*3||qx>W+T*3||qy<-T*3||qy>H+T*3)return;
-var ph2=Object.create(o);ph2.x=d.x;ph2.y=d.y;ph2.vx=d.vx;ph2.vy=d.vy;ph2.g=d.g;ph2.f=d.f;ph2.fl=d.hit>0?.1:0;ph2.sl=0;ph2.inv=0;ph2.heal=0;ph2.cl=0;ph2.abt=0;ph2.dn=0;ph2.jp='';ph2.ang=d.ang;ph2.rl=0;ph2.ch=o.ch;ph2.tc=((o===P||isTm(o,P))?'#3a86ff':'#e63946');
+var ph2=Object.create(o);ph2.x=d.x;ph2.y=d.y;ph2.vx=d.vx;ph2.vy=d.vy;ph2.g=d.g;ph2.f=d.f;ph2.fl=0;ph2.sl=0;ph2.inv=0;ph2.heal=0;ph2.cl=0;ph2.abt=0;ph2.dn=0;ph2.jp='';ph2.ang=d.ang;ph2.rl=0;ph2.ch=o.ch;ph2.tc=((o===P||isTm(o,P))?'#3a86ff':'#e63946');
 drawChar(cx,ph2,qx,qy,T);cx.save();cx.translate(qx+d.w*T/2,qy+d.h*T*.5);cx.rotate(d.ang);if(Math.cos(d.ang)<0)cx.scale(1,-1);armsDraw(cx,ph2,T,0);drawGunRl(cx,ph2,T);armsDraw(cx,ph2,T,1);cx.restore();
 if(P&&isTm(o,P)){cx.fillStyle='#2b2d42';cx.font='700 '+Math.floor(T*.4)+'px "Chakra Petch",sans-serif';cx.textAlign='center';cx.lineWidth=3;cx.strokeStyle='rgba(255,255,255,.85)';cx.fillText(nm(o),qx+d.w*T/2,qy-T*.42)}}})}
 function abxArrow(d,tm){var e=d.tg;if(!e||!e.al||!P||!P.al||!(d.o===P||isTm(d.o,P)))return;
@@ -2856,7 +2851,7 @@ else{cx.fillStyle='#8d99ae';rr(cx,-K*.06,-K*.18,K*.12,K*.36,K*.06);cx.fill();cx.
 cx.fillStyle='#c1121f';for(var j=0;j<g.b.length;j++){var bb=g.b[j];cx.beginPath();cx.arc(bb[0]*K,bb[1]*K,bb[2]*K,0,6.2832);cx.fill()}
 cx.restore()}cx.globalAlpha=1}
 function spark(x,y,c,n){try{if(n===24&&c==='#ffb703')SFX.boom(x,y);else if(n===70&&c==='#ffb703')SFX.bigBoom(x,y);else if(n===10&&c==='#8ac926')SFX.hiss(x,y,'gas');else if(n===10&&c==='#ced4da')SFX.hiss(x,y,'smoke')}catch(e){}if(NET==='host')evq.push(['s',Math.round(x*100)/100,Math.round(y*100)/100,c,n]);var nn=gLow()?Math.ceil(n*.5):n;for(var i=0;i<nn;i++){var a=Math.random()*6.283,v=2+Math.random()*5;fx.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:.4,c:c})}}
-function show(a,b,c){$('cw').classList.toggle('hide',!(a==='Paused'&&DL()&&!NET&&!DSN));$('t').textContent=a;$('tp').textContent=b;$('go').textContent=c;$('menu').classList.remove('hide')}
+function show(a,b,c){$('cw').classList.toggle('hide',!(a==='Paused'&&DL()&&!NET&&!DSN));$('pst').classList.toggle('hide',a!=='Paused');$('t').textContent=a;$('tp').textContent=b;$('go').textContent=c;$('menu').classList.remove('hide')}
 function respawn(a){var en=A.filter(function(o){return o!==a&&o.al&&!isTm(o,a)}),sp=null;
 for(var n=0;n<60;n++){var c=spot();if(en.every(function(o){return Math.hypot(c.x-o.x,c.y-o.y)>=(gm==='tdm'?12:16)})||n>=50){sp=c;break}}
 if(gm==='ball'){sp=ballSpawn(a);a.bzP=null;a.bzB=null;a.hs=null}a.x=sp.x;a.y=sp.y;a.vx=0;a.vy=0;a.hp=200;a.ar=0;a.wp='pistol';a.am=0;a.mg=0;a.rl=0;a.sv=null;a.wc=0;a.cd=0;a.fuel=1;a.g=0;a.dr=0;a.jb=0;a.sl=0;a.sq=0;a.tg=null;a.fl=0;a.inv=2;a.al=1;
@@ -2927,7 +2922,7 @@ var RDL=0,RFIN=0,RPD=null,RTK=0;
 function result(kind,title,sub,rows){if(!RFIN){if(RPD)return;if(RDL>0&&!(DSN&&kind==='lose')&&mode==='play'&&!over){var ra=[kind,title,sub,rows],tk=RTK;RPD=ra;setTimeout(function(){if(RPD!==ra)return;RPD=null;if(tk!==RTK||over||mode!=='play')return;RFIN=1;try{result.apply(null,ra)}finally{RFIN=0}},2000);return}}RPD=null;var r=$('res'),h='';over=1;mode='menu';var cn=giveCoins(kind,sub),rn=giveRank(kind,sub);metaEnd(kind,sub);cn+=metaSum()+dsPanel();
 r.className='ov '+kind;$('rt').textContent=title;$('rcap').textContent=(gm==='snd'||gm==='fo')?'Rounds won':gm==='ball'?'Ball points':(gm==='tdm'&&dmOn())?'Final ranking':'Eliminations';var sb1=$('sb');if(sb1)sb1.className='';$('rs').textContent=sub;$('rk').innerHTML=rows;$('rcoin').innerHTML=cn;$('rrk').innerHTML=rn;rhas=!!rn;
 if(kind==='win')for(var i=0;i<70;i++)h+='<i style="left:'+(Math.random()*100)+'%;background:'+COL[i%10]+';animation-duration:'+(2.5+Math.random()*2.5)+'s;animation-delay:'+(-Math.random()*4)+'s"></i>';
-$('cf').innerHTML=h;radOK=!DSN&&!PLN&&!!P&&gm!=='train'&&sub!=='Opponent left'&&sub!=='The host left';rStage(0);var _tk=RTK;setTimeout(function(){if(_tk===RTK&&over)try{mstOpen()}catch(e){}},1500)}
+$('cf').innerHTML=h;radOK=!DSN&&!PLN&&!!P&&gm!=='train'&&sub!=='Opponent left'&&sub!=='The host left';var _sh='';try{_sh=mstBuild()}catch(e){}$('rsb').innerHTML=_sh;rord=rhas?[0,1,3,2]:[0,1];if(_sh)rord=rhas?[0,1,3,2]:[0,1,3];rStage(0)}
 
 /* ===== Post-match stats: your team and the enemy, with kills, assists, damage and deaths ===== */
 function mstTable(cap,cl,list){var h='<table><caption class="'+cl+'">'+cap+'</caption><tr><th>PLAYER</th><th>KILLS</th><th>ASSISTS</th><th>DAMAGE</th><th>DEATHS</th></tr>';
@@ -2936,9 +2931,17 @@ list.forEach(function(a){h+='<tr'+(a===P?' class="me"':'')+'><td>'+esc(nm(a))+'<
 function mstBuild(){if(!P||!A||!A.length||gm==='train')return'';var team=duoOn()||gm==='tdm'||gm==='snd'||gm==='fo'||gm==='ball',al=[],en=[];
 A.forEach(function(a){if(!a)return;if(a.off&&!(a.k|0)&&!(a.dm|0)&&!(a.ds|0))return;if(a===P||(team&&a.tm===P.tm))al.push(a);else en.push(a)});
 return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY TEAM':'OTHER PLAYERS','e',en):'')}
-function mstOpen(){var h=mstBuild();if(!h)return;$('mstb').innerHTML=h;$('mst').classList.remove('hide')}
-$('mstc').addEventListener('click',function(){$('mst').classList.add('hide')});
-$('rst2').addEventListener('click',mstOpen);
+var rord=[0,1,2];
+/* ===== In-app update (Android app only): downloads new game files in the background and applies them next launch ===== */
+var GAME_VER='1.0.1';
+(function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.CapacitorUpdater}catch(_){return}
+if(!U)return;try{U.notifyAppReady()}catch(_){}
+function gt(a,b){var x=String(a).split('.'),y=String(b).split('.');for(var i=0;i<3;i++){var p=+x[i]||0,q=+y[i]||0;if(p!==q)return p>q}return false}
+function say(t){var e=$('lstoast');if(!e)return;e.textContent=t;e.classList.remove('hide');setTimeout(function(){e.classList.add('hide')},7000)}
+function chk(){fetch('https://thrustroyale.github.io/version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(v){
+if(!v||!v.version||!v.url||!/^https:\/\/github\.com\/ThrustRoyale\//.test(v.url)||!gt(v.version,GAME_VER))return;
+return U.download({url:v.url,version:String(v.version)}).then(function(b){return U.next({id:b.id})}).then(function(){say('Update '+v.version+' downloaded. It installs next time you open the game.')})}).catch(function(){})}
+setTimeout(chk,6000)})();
 function oname(){return NET?(peerName||'Opponent'):'Bot'}
 function endMP(mk,ok,why){var k=mk>ok?'win':mk<ok?'lose':'draw';result(k,k==='win'?'VICTORY':k==='lose'?'DEFEAT':'DRAW',why==='time'?"Time's up":'First to 10 eliminations',sc(mk,pname(),1)+'<div class="vs">VS</div>'+sc(ok,oname()))}
 function endDuel(why){if(DSN){dsEnd(why);return}if(NET==='host')send({t:'end',mk:A[1].k,ok:P.k,why:why});var b=A[1],k=P.k>b.k?'win':P.k<b.k?'lose':'draw';
@@ -4360,7 +4363,7 @@ else if(gm==='br'&&!P.al&&alive()<=1)result('lose','ELIMINATED','Placed #'+(P.pl
 function brTot(){return NOB?NETPL.length:A.length}
 function brCheck(){if(gm!=='br'||NET!=='host'||over)return;if(DUO){var tw={},lw=null,lwi=-1;A.forEach(function(a,i){if(a.al&&!a.off){tw[a.tm]=1;lw=a.tm;lwi=i}});if(Object.keys(tw).length>1)return;send({t:'end',br:1,w:lwi,wt:lw===null?-1:lw});if(lw!==null&&P.tm===lw)result('win','VICTORY','Last duo standing',sc(P.k,pname(),1));else result('lose','ELIMINATED','Placed #'+(P.plc||2)+' of '+brTotT(),sc(P.k,pname(),1));return}var al=A.filter(function(a){return a.al});if(al.length>1)return;var w=al[0],wi=w?A.indexOf(w):-1;send({t:'end',br:1,w:wi});
 if(w===P)result('win','VICTORY','Last one standing',sc(P.k,pname(),1));else result('lose','ELIMINATED','Placed #'+(P.plc||2)+' of '+brTot(),sc(P.k,pname(),1))}
-function hurt(a,d,o){if(a.inv>0||a.cf)return;if(ARM()&&a.ar>0){var ab=Math.min(a.ar,d);a.ar-=ab;d-=ab}if(o&&o!==a&&d>0){o.dm=(o.dm||0)+Math.min(d,Math.max(0,a.hp));(a.ah||(a.ah={}))[A.indexOf(o)]=Date.now()}a.hp-=d;a.lh=0;a.fl=.1;spark(a.x+.35,a.y+.4,'#e63946',3);if(a.hp<=0)kill(a,o);
+function hurt(a,d,o){if(a.inv>0||a.cf)return;if(ARM()&&a.ar>0){var ab=Math.min(a.ar,d);a.ar-=ab;d-=ab}if(o&&o!==a&&d>0){o.dm=(o.dm||0)+Math.min(d,Math.max(0,a.hp));(a.ah||(a.ah={}))[A.indexOf(o)]=Date.now()}a.hp-=d;a.lh=0;spark(a.x+.35,a.y+.4,'#e63946',3);if(a.hp<=0)kill(a,o);
 else if(a.P&&navigator.vibrate)try{navigator.vibrate(25)}catch(e){}}
 /* ===== SOUND EFFECTS (guns + movement). Every sound is synthesized live with the Web Audio API: no audio files, nothing copyrighted. ===== */
 /* base shot: one rifle shot cut from a Pixabay recording (foisal72, "gun-fire"), 98 ms, mono WAV. Every gun is this shot re-pitched, filtered and shaped. */
@@ -6219,11 +6222,11 @@ s+='<circle cx="50" cy="56" r="34" '+F+'/><circle cx="50" cy="56" r="26" fill="'
 s+=D('M50 32L70 52L50 82L30 52Z','fill="#fff" '+S)+D('M30 52L42 52L50 82Z','fill="'+c+'" opacity=".55"')+D('M30 52H70M50 32L42 52L50 82L58 52Z','fill="none" stroke="'+c+'" stroke-width="1.5"')+D(st(81,24,9,2.2,4),'fill="#fff"')+D(st(18,88,7,1.8,4),'fill="#fff"')}
 for(j=0;j<pp;j++){var px=50+(j-(pp-1)/2)*13;s+='<path d="M'+px+' 109l5.5 6l-5.5 6l-5.5-6z" fill="'+lt+'" stroke="'+dk+'" stroke-width="1.6" stroke-linejoin="round"/>'}
 return'<svg viewBox="-8 0 116 124" width="'+sz+'" height="'+Math.round(sz*124/116)+'" style="display:block;'+(f>=3?'filter:drop-shadow(0 0 '+(f>=5?7:3)+'px '+c+')':'')+'">'+G+s+'</svg>'}
-function rStage(n){var r=$('res'),last=rhas?2:1;rst=n;
-['s0','s1','s2'].forEach(function(c,i){Array.prototype.forEach.call(r.querySelectorAll('.'+c),function(e){e.classList.toggle('hide',i!==n)})});
+function rStage(n){var r=$('res'),last=rord[rord.length-1];rst=n;
+['s0','s1','s2','s3'].forEach(function(c,i){Array.prototype.forEach.call(r.querySelectorAll('.'+c),function(e){e.classList.toggle('hide',i!==n)})});
 $('rp').classList.toggle('hide',n===0);$('rn').classList.toggle('hide',n>=last);$('rm').classList.toggle('hide',n<last);
 try{adRes(n)}catch(e){}if(n===2&&rkRun){var f=rkRun;rkRun=null;f()}}
-$('rn').addEventListener('click',function(){rStage(Math.min(rst+1,rhas?2:1))});
+$('rn').addEventListener('click',function(){rStage(rord[Math.min(rord.indexOf(rst)+1,rord.length-1)])});
 /* ===== ONLINE ACCOUNTS + CLOUD SAVE (Supabase). Fill in the two values below; blank = guest-only. ===== */
 var ZZ_URL='https://ervxiplzkyipzqgjtlxs.supabase.co',ZZ_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVydnhpcGx6a3lpcHpxZ2p0bHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzNDUxNjIsImV4cCI6MjEwODkyMTE2Mn0.ShHt5cIzKpp5gtfKbvlnHwPPwiYaLb2boceoDwDRWPc';
 var ZZA=(function(){
@@ -7283,7 +7286,8 @@ window.__accPaint=accPaint;
 $('abtn').addEventListener('click',function(){if(ZZA.acct()){if(!confirm('Sign out? Your progress is saved on your account. You will start as a new guest on this device until you sign in again.'))return;ZZA.signOut()}else accOpen('create',null,'')});
 $('bset').addEventListener('click',accPaint);accPaint();
 
-['sbk','sbt'].forEach(function(i){$(i).addEventListener('click',function(){shw('set',0);nameUI();shw('home',1)})});
+var SETPZ=0;$('pst').addEventListener('click',function(){SETPZ=1;$('menu').classList.add('hide');$('set').style.zIndex=45;shw('set',1);setTab('b')});
+['sbk','sbt'].forEach(function(i){$(i).addEventListener('click',function(){if(SETPZ){SETPZ=0;shw('set',0);$('set').style.zIndex='';nameUI();pauseShow();return}shw('set',0);nameUI();shw('home',1)})});
 $('sn').addEventListener('input',function(){cfg.name=$('sn').value.replace(/[<>]/g,'').slice(0,12);save();$('hn').textContent=pname()});
 $('sc').addEventListener('click',function(){editing=1;$('bm').classList.remove('hide');document.body.classList.add('editing');pkDemo();applyPos();shw('eol',cfg.th);shw('eop',cfg.th);shw('set',0);shw('edit',1)});
 $('ed').addEventListener('click',function(){selCtl(null);editing=0;document.body.classList.remove('editing');pkSig='';$('pkl').classList.add('hide');$('pkl').textContent='';$('slots').textContent='';SLA=[null,null,null,null];shw('edit',0);shw('set',1)});
@@ -7744,7 +7748,9 @@ init();hud(0);last=performance.now();requestAnimationFrame(loop);
 <div id="rot" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg><span>Rotate your phone</span><span style="font-size:15px;font-weight:500;opacity:.8">Thrust Royale is played in landscape</span></div>
 <script>
 (function(){try{var o=screen.orientation;if(o&&o.lock){var go=function(){o.lock('landscape').catch(function(){})};go();document.addEventListener('pointerdown',go,{once:true})}}catch(e){}
-if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})})();
+var NATV=false;try{NATV=!!(window.Capacitor&&window.Capacitor.isNativePlatform&&window.Capacitor.isNativePlatform())}catch(_){}
+if(NATV){try{navigator.serviceWorker&&navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(x){x.unregister()})});window.caches&&caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k)})})}catch(_){}}
+else if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})})();
 </script><script id="zzfit">
 /* Auto-fit menus: any menu screen (home, store, vault, ...) taller or wider than the display is scaled down until everything is on screen. Runs on resize, rotation and whenever a screen opens or changes. */
 (function(){var tm=0,busy=0;
