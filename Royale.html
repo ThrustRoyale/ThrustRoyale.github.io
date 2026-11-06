@@ -2932,17 +2932,30 @@ function mstBuild(){if(!P||!A||!A.length||gm==='train')return'';var team=duoOn()
 A.forEach(function(a){if(!a)return;if(a.off&&!(a.k|0)&&!(a.dm|0)&&!(a.ds|0))return;if(a===P||(team&&a.tm===P.tm))al.push(a);else en.push(a)});
 return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY TEAM':'OTHER PLAYERS','e',en):'')}
 var rord=[0,1,2];
-/* ===== In-app update (Android app only): downloads new game files in the background and applies them next launch ===== */
-var GAME_VER='1.0.1';
-try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings \u00B7 v'+GAME_VER}catch(_e){}
-(function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.CapacitorUpdater}catch(_){return}
-if(!U)return;try{U.notifyAppReady()}catch(_){}
+/* ===== In-app update (Android app only): when a newer version is published, show a required-update screen ===== */
+var GAME_VER='1.0.3';
+try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings · v'+GAME_VER}catch(_e){}
+(function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.LiveUpdate}catch(_){return}
+if(!U)return;try{U.ready().catch(function(){})}catch(_){}
+var ov=null,busy=0,nv=null;
 function gt(a,b){var x=String(a).split('.'),y=String(b).split('.');for(var i=0;i<3;i++){var p=+x[i]||0,q=+y[i]||0;if(p!==q)return p>q}return false}
-function say(t){var e=$('lstoast');if(!e)return;e.textContent=t;e.classList.remove('hide');setTimeout(function(){e.classList.add('hide')},7000)}
-function chk(){fetch('https://thrustroyale.github.io/version.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(v){
-if(!v||!v.version||!v.url||!/^https:\/\/github\.com\/ThrustRoyale\//.test(v.url)||!gt(v.version,GAME_VER))return;
-return U.download({url:v.url,version:String(v.version)}).then(function(b){return U.next({id:b.id})}).then(function(){say('Update '+v.version+' downloaded. It installs next time you open the game.')})}).catch(function(){})}
-setTimeout(chk,6000)})();
+function g(i){return document.getElementById(i)}
+function quit(){try{var A=C.Plugins&&C.Plugins.App;if(A&&A.exitApp){A.exitApp();return}}catch(_){}try{navigator.app&&navigator.app.exitApp&&navigator.app.exitApp()}catch(_){}try{window.close()}catch(_){}}
+function setp(n){var f=g('updf');if(f)f.style.width=Math.max(3,Math.min(100,n|0))+'%'}
+function ui(v){if(ov)return;nv=v;ov=document.createElement('div');ov.id='updov';
+ov.style.cssText='position:fixed;left:0;top:0;right:0;bottom:0;z-index:100002;background:linear-gradient(180deg,#1a1240,#3d2060 62%,#8a3a6e);color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px "Chakra Petch",system-ui,sans-serif;padding:16px;box-sizing:border-box;text-align:center';
+var bs='font:800 18px Chakra Petch,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:12px;padding:12px 26px;cursor:pointer;';
+ov.innerHTML='<div style="max-width:440px;width:100%;display:flex;flex-direction:column;gap:14px;align-items:center"><div style="font-size:28px;letter-spacing:.08em;color:#ffd166">UPDATE REQUIRED</div><div id="updm" style="font-weight:600;color:#d9e2ee;line-height:1.4"></div><div id="updb" style="display:none;width:100%;height:14px;border-radius:8px;background:rgba(255,255,255,.15);overflow:hidden"><i id="updf" style="display:block;height:100%;width:3%;background:linear-gradient(90deg,#ffb703,#ff6b2c);transition:width .2s"></i></div><div id="updbt" style="display:flex;gap:12px"><button id="updgo" style="'+bs+'border:0;background:linear-gradient(180deg,#ffb703,#ff6b2c);color:#2b1400">Update</button><button id="updno" style="'+bs+'background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)">Cancel</button></div></div>';
+document.body.appendChild(ov);var sz=+v.size||0,st=sz>=1048576?(sz/1048576).toFixed(1)+' MB':sz>0?Math.max(1,Math.round(sz/1024))+' KB':'';g('updm').textContent='Version '+v.version+(st?' ('+st+')':'')+' is available. Please update to keep playing.';
+g('updno').addEventListener('click',function(){if(busy)return;quit();g('updm').textContent='You can close the game now.'});
+g('updgo').addEventListener('click',go)}
+function go(){if(busy||!nv)return;busy=1;g('updbt').style.display='none';g('updb').style.display='block';setp(3);g('updm').textContent='Downloading update...';
+try{U.addListener('downloadBundleProgress',function(e){if(e&&e.progress!=null){setp(e.progress*100);if(e.progress>=.99)g('updm').textContent='Installing update...'}})}catch(_){}
+var bid=String(nv.version);U.downloadBundle({bundleId:bid,url:nv.url}).then(function(){setp(100);g('updm').textContent='Installing update...';return U.setNextBundle({bundleId:bid})}).then(function(){return U.reload()}).catch(function(e){busy=0;g('updb').style.display='none';g('updbt').style.display='flex';g('updgo').textContent='Retry';g('updm').textContent='Update failed: '+((e&&(e.message||e.errorMessage))||String(e))+'. Check your connection and try again.'})}
+function chk(){var ac=window.AbortController?new AbortController():null,t=setTimeout(function(){try{ac&&ac.abort()}catch(_){}},8000);
+fetch('https://thrustroyale.github.io/version.json?'+Date.now(),{cache:'no-store',signal:ac?ac.signal:undefined}).then(function(r){return r.json()}).then(function(v){clearTimeout(t);
+if(!v||!v.version||!v.url||!/^https:\/\/(github\.com\/ThrustRoyale\/|thrustroyale\.github\.io\/)/.test(v.url)||!gt(v.version,GAME_VER))return;ui(v)}).catch(function(){clearTimeout(t)})}
+chk()})();
 function oname(){return NET?(peerName||'Opponent'):'Bot'}
 function endMP(mk,ok,why){var k=mk>ok?'win':mk<ok?'lose':'draw';result(k,k==='win'?'VICTORY':k==='lose'?'DEFEAT':'DRAW',why==='time'?"Time's up":'First to 10 eliminations',sc(mk,pname(),1)+'<div class="vs">VS</div>'+sc(ok,oname()))}
 function endDuel(why){if(DSN){dsEnd(why);return}if(NET==='host')send({t:'end',mk:A[1].k,ok:P.k,why:why});var b=A[1],k=P.k>b.k?'win':P.k<b.k?'lose':'draw';
