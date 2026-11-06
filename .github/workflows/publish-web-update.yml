@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "New game version, e.g. 1.0.1 (must match GAME_VER in Royale.html)"
+        description: "New game version, e.g. 1.0.3 (must match GAME_VER in Royale.html)"
         required: true
 permissions:
   contents: write
@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       V: ${{ inputs.version }}
-      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
       - name: Check the version matches the game file
@@ -20,16 +19,16 @@ jobs:
       - name: Build the update zip
         run: |
           python3 prepare_www.py
-          cd www && zip -r ../www.zip . && cd ..
-      - name: Create the release
-        run: gh release create "web-$V" www.zip --title "Web update $V" --notes "Over-the-air game update"
+          mkdir -p updates
+          (cd www && zip -r "../updates/web-$V.zip" .)
+          ls -1t updates/*.zip | tail -n +4 | xargs -r rm -f
       - name: Point version.json at it
         run: |
-          SIZE=$(stat -c%s www.zip)
-          printf '{"version":"%s","size":%s,"url":"https://github.com/%s/releases/download/web-%s/www.zip"}\n' "$V" "$SIZE" "${{ github.repository }}" "$V" > version.json
+          SIZE=$(stat -c%s "updates/web-$V.zip")
+          printf '{"version":"%s","size":%s,"url":"https://thrustroyale.github.io/updates/web-%s.zip"}\n' "$V" "$SIZE" "$V" > version.json
           git config user.name github-actions
           git config user.email actions@github.com
-          git add version.json
+          git add updates version.json
           git commit -m "Web update $V"
           git push
           
