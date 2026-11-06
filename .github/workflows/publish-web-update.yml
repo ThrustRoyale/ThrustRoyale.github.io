@@ -25,7 +25,8 @@ jobs:
         run: gh release create "web-$V" www.zip --title "Web update $V" --notes "Over-the-air game update"
       - name: Point version.json at it
         run: |
-          printf '{"version":"%s","url":"https://github.com/%s/releases/download/web-%s/www.zip"}\n' "$V" "${{ github.repository }}" "$V" > version.json
+          SIZE=$(stat -c%s www.zip)
+          printf '{"version":"%s","size":%s,"url":"https://github.com/%s/releases/download/web-%s/www.zip"}\n' "$V" "$SIZE" "${{ github.repository }}" "$V" > version.json
           git config user.name github-actions
           git config user.email actions@github.com
           git add version.json
