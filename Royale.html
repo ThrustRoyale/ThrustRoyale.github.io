@@ -2937,7 +2937,7 @@ A.forEach(function(a){if(!a)return;if(a.off&&!(a.k|0)&&!(a.dm|0)&&!(a.ds|0))retu
 return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY TEAM':'OTHER PLAYERS','e',en):'')}
 var rord=[0,1,2];
 /* ===== In-app update (Android app only): when a newer version is published, show a required-update screen ===== */
-var GAME_VER='1.0.5';
+var GAME_VER='1.0.6';
 try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings · v'+GAME_VER}catch(_e){}
 (function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.LiveUpdate}catch(_){return}
 if(!U)return;try{U.ready().catch(function(){})}catch(_){}
@@ -7277,7 +7277,7 @@ function accName(cb){if(!accUnnamed()){cb();return}ACC.mode='name';$('acct').tex
 $('accb').innerHTML='<p>Pick the name other players will see. You can change it later in Settings.</p><input id="anm" maxlength="12" autocomplete="off" spellcheck="false" placeholder="Your name"><p id="accm"></p><button class="bt" id="ang">Continue</button>';shw('acc',1);
 var go=function(){var v=($('anm').value||'').replace(/[<>]/g,'').trim().slice(0,12);if(!v){accMsg('Enter a name to continue.');return}cfg.name=v;save();try{$('sn').value=v}catch(e){}try{nameUI()}catch(e){}shw('acc',0);cb()};
 $('ang').addEventListener('click',go);$('anm').addEventListener('keydown',function(e){if(e.key==='Enter')go()});setTimeout(function(){try{$('anm').focus()}catch(e){}},250)}
-function accDone(w){try{localStorage.setItem('zz.welcomed','1')}catch(e){}shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur'){curRender()}else if(f==='welcome'){var nx=function(){accName(function(){try{window.__tutAuto()}catch(e){}})};if(w)setTimeout(nx,900);else nx()}}
+function accDone(w){try{localStorage.setItem('zz.welcomed','1')}catch(e){}shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur'){curRender()}else if(f==='welcome'){if(w){try{window.__tutAuto()}catch(e){}}else accName(function(){try{window.__tutAuto()}catch(e){}})}}
 function accErr(e){var m=(e&&e.msg)||'Something went wrong. Try again.';if(/already.*regist|already.*exists/i.test(m))return'That email already has an account. Tap Sign in instead.';if(/invalid login/i.test(m))return'Wrong email or password.';if(/not confirmed/i.test(m))return'Confirm your email first. Check your inbox for the link.';if(/rate limit|too many|seconds/i.test(m))return'Too many tries. Wait a minute and try again.';if(/password.*(least|short|weak)/i.test(m))return'Password is too short. Use at least 8 characters.';return m}
 function accOpen(mode,msg,from){if(from!==undefined)ACC.from=from||'';
 ACC.mode=mode;var h='',g=!!ZZA.user()&&!ZZA.acct(),T={welcome:'Welcome',create:g?'Link account':'Create account',signin:'Sign in',forgot:'Reset password'};
