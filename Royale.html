@@ -2937,7 +2937,7 @@ A.forEach(function(a){if(!a)return;if(a.off&&!(a.k|0)&&!(a.dm|0)&&!(a.ds|0))retu
 return mstTable(team?'YOUR TEAM':'YOU','a',al)+(en.length?mstTable(team?'ENEMY TEAM':'OTHER PLAYERS','e',en):'')}
 var rord=[0,1,2];
 /* ===== In-app update (Android app only): when a newer version is published, show a required-update screen ===== */
-var GAME_VER='1.0.4';
+var GAME_VER='1.0.5';
 try{var _sh2=document.querySelector('#setn h2');if(_sh2)_sh2.textContent='Settings · v'+GAME_VER}catch(_e){}
 (function(){var C=window.Capacitor,U;try{if(!(C&&C.isNativePlatform&&C.isNativePlatform()))return;U=C.Plugins&&C.Plugins.LiveUpdate}catch(_){return}
 if(!U)return;try{U.ready().catch(function(){})}catch(_){}
@@ -6012,7 +6012,7 @@ function emIc(e,s){if(e.an==='soul')return soulIc(s);var T=e.x==='pk'?PK:RK;retu
 var emIm={},emSl=0;function emImg(x){if(!emIm[x]){var T=x==='pk'?PK:RK,i=new Image();i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(rkBadge(T.length-1,96,T).replace('<svg ','<svg xmlns="http://www.w3.org/2000/svg" '));emIm[x]=i}return emIm[x]}
 function emOwn(e){return!!(e.d||cfg.em[e.id])}
 function emTab(){var h='<div class="emw"><h3>Equipped</h3><div class="emr">',i;for(i=0;i<EMN;i++){var e=EMO.filter(function(x){return x.id===cfg.ee[i]})[0];h+='<button class="emc sl'+(i===emSl?' on':'')+'" data-s="'+i+'"><i>'+(e?emIc(e,44):'+')+'</i><b>'+(e?e.n:'Empty')+'</b></button>'}
-h+='</div><h3>Collection</h3><div class="emr">';EMO.forEach(function(e){var o=emOwn(e),q=cfg.ee.indexOf(e.id);h+='<button class="emc'+(o?'':' lk')+(q>=0?' on':'')+(RAR[e.id]!==undefined?rcls(e.id):'')+'" data-e="'+e.id+'"><i>'+emIc(e,44)+'</i><b>'+e.n+'</b>'+(RAR[e.id]!==undefined?rchip(e.id):'')+'<span>'+(!o?'Locked':q>=0?'Slot '+(q+1):'Tap to equip')+'</span></button>'});return h+'</div></div>'}
+h+='</div><h3>Collection</h3><div class="emr">';EMO.forEach(function(e){var o=emOwn(e),q=cfg.ee.indexOf(e.id);if(!o)return;h+='<button class="emc'+(o?'':' lk')+(q>=0?' on':'')+(RAR[e.id]!==undefined?rcls(e.id):'')+'" data-e="'+e.id+'"><i>'+emIc(e,44)+'</i><b>'+e.n+'</b>'+(RAR[e.id]!==undefined?rchip(e.id):'')+'<span>'+(!o?'Locked':q>=0?'Slot '+(q+1):'Tap to equip')+'</span></button>'});return h+'</div></div>'}
 function emList(){return cfg.ee.map(function(id){return EMO.filter(function(e){return e.id===id&&emOwn(e)})[0]}).filter(Boolean)}
 /* sets an emote on any player; the host is authoritative and the other players see it through the snapshot (ei = emote id, es = play counter, er = ms left) */
 function emSet(a,e,ms){a.em=(e.an&&!e.sm)?'':e.e;a.emx=e.x||'';a.emk=e.an||'';a.eid=e.id;a.emT=Date.now()+(ms||(e.an==='soul'?SOLD:AE[e.an]?AE[e.an].du:2200))}
@@ -7038,13 +7038,13 @@ c.lineJoin='round';c.lineWidth=2.4;c.strokeStyle='#2b2d42';
 c.fillStyle='#adb5bd';c.fillRect(x+3,64,9,7);c.strokeRect(x+3,64,9,7);
 c.fillStyle='#ff9f1c';c.beginPath();c.moveTo(x+4,71);c.lineTo(x+11,71);c.lineTo(x+7.5,86);c.closePath();c.fill();c.fillStyle='#ffe28a';c.beginPath();c.moveTo(x+6,71);c.lineTo(x+9,71);c.lineTo(x+7.5,80);c.closePath();c.fill()});
 c.fillStyle='#3d405b';c.fillRect(45,40,11,8);c.strokeRect(45,40,11,8);
-var g=vjCtx($('vjc2')),K=140;g.translate(-8,30);g.lineJoin='round';
-phxPack(g,{f:1,w:.7,jet:0},[.47*K,.58*K],0,K,0,'#fff','#2b2d42','#3a86ff',1);
+if($('vjc2')){var g=vjCtx($('vjc2')),K=140;g.translate(-8,30);g.lineJoin='round';
+phxPack(g,{f:1,w:.7,jet:0},[.47*K,.58*K],0,K,0,'#fff','#2b2d42','#3a86ff',1)}
 vjSel()}
 function vjSel(){var own=!!cfg.sc[10],on=jpOn();[['vj-twin','twin'],['vj-phx','phx']].forEach(function(z){var e=$(z[0]);if(e&&!e.querySelector('.rr')){e.className+=rcls(z[1]);e.querySelector('b').insertAdjacentHTML('afterend',rchip(z[1]))}});
-$('vj-twin').classList.toggle('on',!on);$('vj-phx').classList.toggle('on',on);$('vj-phx').classList.toggle('lk',!own);
+var px=$('vj-phx');$('vj-twin').classList.toggle('on',!on||!px);if(px){px.classList.toggle('on',on);px.classList.toggle('lk',!own)}
 $('vj-twin').lastChild.textContent=on?'Tap to equip':'Equipped';
-$('vj-phx').lastChild.textContent=on?'Equipped':own?'Tap to equip':'Locked \u00B7 Battle Pass Level 10'}
+if(px)px.lastChild.textContent=on?'Equipped':own?'Tap to equip':'Locked \u00B7 Battle Pass Level 10'}
 var vm='c';
 var FOS=[{id:'champ',n:'Champion Set',e:'\uD83C\uDFC6',c:0,nb:1,d:'Season reward for the top 250 on the leaderboard: gold armour, plumed helmet and a red cape',ft:[['New Champion Look','Gold armour with shoulder plates, a plumed gold helmet, red cape and crimson trousers'],['Season Reward','Given to the top 250 players on the leaderboard at the end of each season']]},{id:'ninja',n:'Ninja Set',e:'\uD83E\uDD77',c:0,nb:1,d:'Hood with a team-colour headband, dark wrapped outfit and a katana on the back',ft:[['New Ninja Look','Hood with a team-colour headband and a dark wrapped outfit'],['Katana on the Back','Sheathed blade worn across the back'],['New Pistol Look and Ammo','Your pistol becomes a spinning shuriken that fires shuriken stars']]},{id:'magic',n:'Magician Set',e:'\uD83C\uDFA9\u2728',c:4500,d:'Top hat, tuxedo vest with bow tie, cape and dark pants',ft:[['New Magician Look','Top hat, tuxedo vest with bow tie, flowing cape and dark pants'],['New Pistol Look and Ammo','Your pistol becomes a magic wand that fires glowing magic bolts']]},{id:'ghost',n:'Ghost Set',e:'\uD83D\uDC7B',c:0,g:60,d:'Mythic collection: a full white ghost that floats instead of running. Its pistol fires pure white shots.',ft:[['New Ghost Look','A full white ghost with a glowing aura'],['Floats Instead of Running','No legs and no footsteps: it hovers and drifts, and wisps puff out while jetting'],['New Pistol Look and Ammo','Your pistol becomes a Spirit Wisp that fires tiny white flying ghosts'],['Ghost Kill Effect','Enemies you defeat dissolve into drifting white wisps, and you vanish in a white puff when you fall']]}];var PTS=[{id:'pnjeans',n:'Blue Jeans',e:'\uD83D\uDC56',c:1200},{id:'pnkhaki',n:'Khaki Pants',e:'\uD83D\uDC56',c:1500},{id:'pncamo',n:'Camo Cargo',e:'\uD83D\uDC56',c:1800},{id:'skirt',n:'Pleated Skirt',e:'\uD83D\uDC57',c:2500,d:'Female character only'},{id:'pngold',n:'Golden Pants',e:'\uD83D\uDC56',c:3500}];var SHS=[{id:'shgreen',n:'Forest Jersey',e:'\uD83D\uDC55',c:1500},{id:'shorange',n:'Sunset Jersey',e:'\uD83D\uDC55',c:1500},{id:'shteal',n:'Teal Jersey',e:'\uD83D\uDC55',c:1800},{id:'neon',n:'Neon Jersey',e:'\uD83D\uDC55',c:3000},{id:'shgold',n:'Gold Jersey',e:'\uD83D\uDC55',c:3500}];var HWS=[{id:'beanie',n:'Beanie',e:'\uD83E\uDDE2',c:800},{id:'bucket',n:'Bucket Hat',e:'\uD83D\uDC52',c:1200},{id:'halo',n:'Halo',e:'\uD83D\uDE07',c:1500},{id:'cowboy',n:'Cowboy Hat',e:'\uD83E\uDD20',c:2000},{id:'tophat',n:'Top Hat',e:'\uD83C\uDFA9',c:2500},{id:'wizard',n:'Wizard Hat',e:'\uD83E\uDDD9',c:3000},{id:'viking',n:'Viking Helmet',e:'\u2694\uFE0F',c:3500},{id:'crown',n:'Gold Crown',e:'\uD83D\uDC51',c:4000}];var vos='f',VOI={f:['Full Outfit','<circle cx="12" cy="5.5" r="3"/><path d="M6.5 21v-5.5a5.5 5.5 0 0 1 11 0V21"/><path d="M9.5 21v-3.5M14.5 21v-3.5"/>'],h:['Headwear','<path d="M4 15a8 8 0 0 1 16 0z"/><path d="M2.5 15h19v2.5h-19z"/>'],s:['Shirt','<path d="M8 4L3 7l2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/>'],p:['Pants','<path d="M7 3h10l1 18h-5l-1-10-1 10H6z"/>']};
 function voShow(k){vos=k;Array.prototype.forEach.call(document.querySelectorAll('#vcc .vob'),function(b){b.classList.toggle('on',b.dataset.o===k)});
@@ -7080,7 +7080,7 @@ $('vrt').textContent=VTT[m];$('vr').classList.toggle('vro',m==='o');var h='';
 if(m==='c')['bob','fem'].forEach(function(k){h+='<button class="vcard'+(cfg.char===k?' on':'')+'" data-k="'+k+'"><canvas id="vcv-'+k+'"></canvas><b>'+VST[k].n+'</b><span class="vjs">'+VST[k].s+' \u00B7 '+(cfg.char===k?'Equipped':'Tap to equip')+'</span></button>'});
 else if(m==='o'){h='<div class="vofw"><div class="vol">';Object.keys(VOI).forEach(function(k){h+='<button class="vob'+(k===vos?' on':'')+'" data-o="'+k+'"><svg viewBox="0 0 24 24">'+VOI[k][1]+'</svg>'+VOI[k][0]+'</button>'});h+='</div><div class="voc" id="voc"></div><div class="vop"><canvas id="vcv-o"></canvas></div></div>'}
 else if(m==='e')h=emTab();
-else if(m==='j')h='<button class="vcard on" id="vj-twin"><canvas id="vjc"></canvas><b>DEFAULT</b><span class="vjs"></span></button><button class="vcard" id="vj-phx"><canvas id="vjc2"></canvas><b>PHOENIX</b><span class="vjs"></span></button>';
+else if(m==='j')h='<button class="vcard on" id="vj-twin"><canvas id="vjc"></canvas><b>DEFAULT</b><span class="vjs"></span></button>'+(cfg.sc[10]?'<button class="vcard" id="vj-phx"><canvas id="vjc2"></canvas><b>PHOENIX</b><span class="vjs"></span></button>':'');
 else if(m==='r')h='<button class="vcard on"><canvas id="vcv-r"></canvas><b>DEFAULT</b><span class="vjs">Equipped</span></button>';
 else h='<button class="vcard on"><canvas id="vcv-l"></canvas><b>DEFAULT</b><span class="vjs">Equipped</span></button>';
 $('vcc').innerHTML=h;
@@ -7272,7 +7272,12 @@ paint();ZZA.boot()})();
 var ACC={from:'',mode:'',busy:0};
 function accMsg(m){var e=$('accm');if(e)e.textContent=m||''}
 function accFirst(){try{if(!ZZA.on()||ZZA.acct()||localStorage.getItem('zz.welcomed'))return false}catch(e){return false}accOpen('welcome',null,'welcome');return true}
-function accDone(){try{localStorage.setItem('zz.welcomed','1')}catch(e){}shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur'){curRender()}else if(f==='welcome'){try{window.__tutAuto()}catch(e){}}}
+function accUnnamed(){var n=(cfg.name||'').trim();return!n||n==='You'}
+function accName(cb){if(!accUnnamed()){cb();return}ACC.mode='name';$('acct').textContent='Choose your name';
+$('accb').innerHTML='<p>Pick the name other players will see. You can change it later in Settings.</p><input id="anm" maxlength="12" autocomplete="off" spellcheck="false" placeholder="Your name"><p id="accm"></p><button class="bt" id="ang">Continue</button>';shw('acc',1);
+var go=function(){var v=($('anm').value||'').replace(/[<>]/g,'').trim().slice(0,12);if(!v){accMsg('Enter a name to continue.');return}cfg.name=v;save();try{$('sn').value=v}catch(e){}try{nameUI()}catch(e){}shw('acc',0);cb()};
+$('ang').addEventListener('click',go);$('anm').addEventListener('keydown',function(e){if(e.key==='Enter')go()});setTimeout(function(){try{$('anm').focus()}catch(e){}},250)}
+function accDone(w){try{localStorage.setItem('zz.welcomed','1')}catch(e){}shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur'){curRender()}else if(f==='welcome'){var nx=function(){accName(function(){try{window.__tutAuto()}catch(e){}})};if(w)setTimeout(nx,900);else nx()}}
 function accErr(e){var m=(e&&e.msg)||'Something went wrong. Try again.';if(/already.*regist|already.*exists/i.test(m))return'That email already has an account. Tap Sign in instead.';if(/invalid login/i.test(m))return'Wrong email or password.';if(/not confirmed/i.test(m))return'Confirm your email first. Check your inbox for the link.';if(/rate limit|too many|seconds/i.test(m))return'Too many tries. Wait a minute and try again.';if(/password.*(least|short|weak)/i.test(m))return'Password is too short. Use at least 8 characters.';return m}
 function accOpen(mode,msg,from){if(from!==undefined)ACC.from=from||'';
 ACC.mode=mode;var h='',g=!!ZZA.user()&&!ZZA.acct(),T={welcome:'Welcome',create:g?'Link account':'Create account',signin:'Sign in',forgot:'Reset password'};
@@ -7285,7 +7290,7 @@ else{h=(mode==='create'?'<p>'+(g?'Your current progress is kept and attached to 
 '<button class="acl" id="abk">'+(ACC.from==='welcome'?'Back':'Cancel')+'</button>'}
 $('accb').innerHTML=h;shw('acc',1);if(msg&&mode!=='welcome'){accMsg(msg)}
 var q=function(i,f){var e=$(i);if(e)e.addEventListener('click',f)};
-q('aw1',function(){accOpen('create')});q('aw2',function(){accOpen('signin')});q('aw3',accDone);
+q('aw1',function(){accOpen('create')});q('aw2',function(){accOpen('signin')});q('aw3',function(){accDone()});
 q('al1',function(){accOpen('signin')});q('al2',function(){accOpen('forgot')});q('al3',function(){accOpen('create')});
 q('abk',function(){if(ACC.from==='welcome')accOpen('welcome');else{shw('acc',0);var f=ACC.from;ACC.from='';if(f==='cur')curRender()}});
 q('ago',accGo);var pw=$('apw');if(pw)pw.addEventListener('keydown',function(e){if(e.key==='Enter')accGo()})}
@@ -7296,7 +7301,7 @@ ACC.busy=1;accMsg('Please wait...');var b=$('ago');if(b)b.disabled=true;
 var pr=m==='create'?ZZA.link(em,pw):m==='signin'?ZZA.signIn(em,pw):ZZA.recover(em);
 pr.then(function(r){ACC.busy=0;try{localStorage.setItem('zz.email',em);localStorage.setItem('zz.welcomed','1')}catch(e){}
 if(m==='forgot'){accMsg('Reset link sent. Check your inbox.');if(b)b.disabled=false;return}
-if(r&&r.done){accPaint();var f=ACC.from;accDone();if(f==='cur')curMsg('Account linked. You can buy tickets now.')}
+if(r&&r.done){accPaint();var f=ACC.from;accDone(m==='signin');if(f==='cur')curMsg('Account linked. You can buy tickets now.')}
 else if(r&&r.pending){accMsg('We sent a confirmation link to '+em+'. Open it, then come back.');if(b)b.disabled=false}
 },function(e){ACC.busy=0;if(b)b.disabled=false;accMsg(accErr(e))})}
 function accPaint(){var m=$('amsg'),b=$('abtn');if(!m||!b)return;var on=ZZA.on();
@@ -7392,7 +7397,7 @@ $('tutp').addEventListener('click',function(){tutShow(tutI-1)});
 $('tutn').addEventListener('click',function(){if(tutI>=TUTP.length-1)tutClose();else tutShow(tutI+1)});
 try{if(localStorage.getItem('zz_tut'))$('btut').classList.remove('pulse')}catch(e){}
 if($('stut'))$('stut').addEventListener('click',tutOpen);
-window.__tutAuto=function(n){var h0=$('home');if(!(h0&&!h0.classList.contains('hide'))&&(n|0)<12&&ZZA.on()&&!ZZA.acct()){try{if(!localStorage.getItem('zz.welcomed')){setTimeout(function(){window.__tutAuto((n|0)+1)},500);return}}catch(e){}}if(accFirst())return;try{if(localStorage.getItem('zz_tut'))return}catch(e){return}var h=$('home');if(h&&!h.classList.contains('hide')&&mode!=='play')tutOpen()};
+window.__tutAuto=function(n){var h0=$('home');if(!(h0&&!h0.classList.contains('hide'))&&(n|0)<12&&ZZA.on()&&!ZZA.acct()){try{if(!localStorage.getItem('zz.welcomed')){setTimeout(function(){window.__tutAuto((n|0)+1)},500);return}}catch(e){}}if(accFirst())return;try{if(localStorage.getItem('zz_tut'))return}catch(e){return}var h=$('home');if(h&&!h.classList.contains('hide')&&mode!=='play'){if(accUnnamed()){accName(function(){tutOpen()});return}tutOpen()}};
 
 var snN=0,SNC=0,SNF=1,snT=0,kfT=0,lastSn=0,inQ=0,psQ=0;function snap(){return{t:'s',tm:r3(t),
 a:A.map(function(a){var o={x:r3(a.x),y:r3(a.y),vx:r3(a.vx),vy:r3(a.vy),f:a.f,ang:r3(a.ang),hp:Math.round(a.hp*10)/10,ar:Math.round(a.ar||0),al:a.al,inv:r3(a.inv),heal:r3(a.heal),jet:a.jet?1:0,cl:a.cl||0,sl:r3(a.sl||0),sd:a.sd||0,g:a.g?1:0,fl:r3(a.fl),wp:a.wp,am:a.am,mg:a.mg,rl:r3(a.rl),hk:a.hk,wc:a.wc,k:a.k,rs:r3(a.rs||0),dn:a.dn?1:0,cf:a.cf?1:0};
