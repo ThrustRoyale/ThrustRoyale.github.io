@@ -5174,7 +5174,7 @@ if(wbase(a.wp)==='lmg'){if(I.fire&&a.rl<=0)a.spu=(a.spu||0)+dt;else a.spu=Math.m
 function los(a,b){return seg(a.x+.35,a.y+.45,b.x+.35,b.y+.45,1)}
 /* ===== SKETCHWALL: tap = quick wall, hold + drag = draw your own thin wall. Players walk through it; bullets, throwables and abilities do not. ===== */
 var SW=[],bwq=null,swId=1,BWD={on:0};
-var BW={max:9,spd:18,intro:.45,life:9,fade:1.2,cd:0,hp:450,gap:.3,tapH:3,tapDx:1.2};
+var BW={max:9,spd:23,intro:.2,life:9,fade:1.2,cd:0,hp:450,gap:.3,tapH:3,tapDx:1.2};
 function r2(v){return Math.round(v*100)/100}
 /* ===== Sketchwall lines come out ruler-straight: the wobbly hand-drawn path is reduced to its corners, near-flat or near-upright runs snap to exactly flat or upright ===== */
 function swRdp(p,e){if(p.length<3)return p.slice();var a=p[0],b=p[p.length-1],dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy),mx=-1,mi=0;
@@ -5231,6 +5231,10 @@ function swDir(pts){var n=pts.length;if(n<2)return null;var e=pts[n-1],acc=0,p=p
 return acc>.05?Math.atan2(e[1]-p[1],e[0]-p[0]):null}
 /* ease an angle held on object o toward target ang */
 function swEase(o,ang){if(ang===null)return o.pa;if(o.pa===undefined)o.pa=ang;var d=Math.atan2(Math.sin(ang-o.pa),Math.cos(ang-o.pa));o.pa+=d*.3;return o.pa}
+/* where a Sketchwall starts: toward the left stick (up = above you), otherwise in front of you */
+function swAim(){var dx=mv.x||0,dy=mv.y||0,m=Math.hypot(dx,dy);if(m<.35)return{x:P.f>=0?1:-1,y:0,s:0};return{x:dx/m,y:dy/m,s:1}}
+function swAnchor(){var d=swAim();return[P.x+.35+d.x*1.4,P.y+.45+d.y*1.4]}
+function swTapPts(){var d=swAim(),cx0=P.x+.35;if(d.s&&Math.abs(d.y)>.7){var y=P.y+.45+(d.y<0?-1.7:1.7);return[[cx0-BW.tapH/2,y],[cx0+BW.tapH/2,y]]}var sg=d.s&&Math.abs(d.x)>.35?(d.x>0?1:-1):(P.f>=0?1:-1),x=cx0+sg*BW.tapDx,y2=P.y+.9;return[[x,y2],[x,y2-BW.tapH]]}
 function swPenOn(a){return!!((a.P&&BWD.on)||a.bwD)}
 /* world angle the pencil points along (the stroke direction, eased); null = idle hold */
 function swHold(a){if(a.P)return BWD.on&&BWD.mv?swEase(BWD,swDir(BWD.pts)):null;var D=a.bwD;return D&&D.cur?swEase(D,swDir(D.cur)):null}
@@ -5271,7 +5275,7 @@ else if(tb<0){var p=swPt(w,bt);gx=p[0];gy=p[1];gs=1}
 else if(tb<.35){var p2=w.pts[w.pts.length-1];gx=p2[0];gy=p2[1];gs=1-tb/.35}
 if(gs>0)swOrb(gx*T-cam.x,gy*T-cam.y+Math.sin(tt*9)*T*.04,gs,mine,tt)});
 if(BWD.on&&P&&P.al){var an=BWD.pts[0],ox=an[0]*T-cam.x,oy=an[1]*T-cam.y;
-if(!BWD.mv){var f=P.f>=0?1:-1,x=(P.x+.35+f*BW.tapDx)*T-cam.x,y=(P.y+.9)*T-cam.y;cx.setLineDash([T*.2,T*.16]);cx.strokeStyle='rgba(191,244,255,.85)';cx.lineWidth=T*.07;cx.beginPath();cx.moveTo(x,y);cx.lineTo(x,y-BW.tapH*T);cx.stroke();cx.setLineDash([])}
+if(!BWD.mv){var tp=swTapPts();cx.setLineDash([T*.2,T*.16]);cx.strokeStyle='rgba(191,244,255,.85)';cx.lineWidth=T*.07;cx.beginPath();cx.moveTo(tp[0][0]*T-cam.x,tp[0][1]*T-cam.y);cx.lineTo(tp[1][0]*T-cam.x,tp[1][1]*T-cam.y);cx.stroke();cx.setLineDash([])}
 else{var r=BWD.len/BW.max,col=r<.75?'#bff4ff':r<.92?'#ffd166':'#ff6b6b';var sp=swClean(BWD.pts);cx.beginPath();cx.moveTo(ox,oy);for(var i=1;i<sp.length;i++)cx.lineTo(sp[i][0]*T-cam.x,sp[i][1]*T-cam.y);
 cx.strokeStyle='rgba(76,201,240,.25)';cx.lineWidth=T*.3;cx.stroke();cx.lineJoin='miter';cx.setLineDash([T*.2,T*.14]);cx.strokeStyle=col;cx.lineWidth=T*.07;cx.stroke();cx.setLineDash([]);
 var en=BWD.pts[BWD.pts.length-1],ex=en[0]*T-cam.x,ey=en[1]*T-cam.y;cx.fillStyle=col;cx.beginPath();cx.arc(ex,ey,T*(BWD.cap?.16+.05*Math.sin(tt*30):.11),0,6.283);cx.fill();
@@ -5286,14 +5290,14 @@ cx.strokeStyle='rgba('+c1+',.25)';cx.lineWidth=T*.3;cx.stroke();cx.setLineDash([
 cx.restore()}
 (function(){var b=$('bwl');if(!b)return;b.addEventListener('contextmenu',function(e){e.preventDefault()});
 b.addEventListener('pointerdown',function(e){if(editing||mode!=='play'||BWD.on||!P||!swCan(P))return;e.preventDefault();try{b.setPointerCapture(e.pointerId)}catch(_){}
-var fa=P.f>=0?1:-1,ax=P.x+.35+fa*1.4,ay=P.y+.45;BWD={on:1,pid:e.pointerId,x0:e.clientX,y0:e.clientY,ax:ax,ay:ay,pts:[[ax,ay]],len:0,mv:0,cap:0};b.classList.add('arm')});
+var an0=swAnchor(),ax=an0[0],ay=an0[1];BWD={on:1,pid:e.pointerId,x0:e.clientX,y0:e.clientY,ax:ax,ay:ay,pts:[[ax,ay]],len:0,mv:0,cap:0};b.classList.add('arm')});
 b.addEventListener('pointermove',function(e){if(!BWD.on||e.pointerId!==BWD.pid)return;e.preventDefault();var dx=e.clientX-BWD.x0,dy=e.clientY-BWD.y0;
 if(!BWD.mv&&Math.hypot(dx,dy)<12)return;BWD.mv=1;var tx=BWD.ax+dx/T,ty=BWD.ay+dy/T,p=BWD.pts[BWD.pts.length-1],d=Math.hypot(tx-p[0],ty-p[1]);
 while(d>=BW.gap&&!BWD.cap){var k=BW.gap/d,nx=p[0]+(tx-p[0])*k,ny=p[1]+(ty-p[1])*k;
 if(BWD.len+BW.gap>BW.max){var rm=BW.max-BWD.len;if(rm>.02)BWD.pts.push([p[0]+(tx-p[0])/d*rm,p[1]+(ty-p[1])/d*rm]);BWD.len=BW.max;BWD.cap=1;break}
 BWD.pts.push([nx,ny]);BWD.len+=BW.gap;p=BWD.pts[BWD.pts.length-1];d=Math.hypot(tx-p[0],ty-p[1])}});
 function end(e){if(!BWD.on||e.pointerId!==BWD.pid)return;var d=BWD;BWD={on:0};b.classList.remove('arm');if(e.type==='pointercancel'||!P||!P.al)return;
-var pts;if(d.mv&&d.len>=.8)pts=swClean(d.pts);else{var x=P.x+.35+(P.f>=0?1:-1)*BW.tapDx,y=P.y+.9;pts=[[x,y],[x,y-BW.tapH]]}bwq=pts}
+var pts;if(d.mv&&d.len>=.8)pts=swClean(d.pts);else pts=swTapPts();bwq=pts}
 b.addEventListener('pointerup',end);b.addEventListener('pointercancel',end)})();
 /* ===== bots use the Sketchwall too: they judge when cover helps, draw it with a pencil over a moment, then it builds like any other wall ===== */
 function swPart(pts,len){var o=[[pts[0][0],pts[0][1]]],acc=0;for(var i=1;i<pts.length;i++){var p=pts[i-1],q=pts[i],sl=Math.hypot(q[0]-p[0],q[1]-p[1]);
