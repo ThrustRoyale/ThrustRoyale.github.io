@@ -1,0 +1,9 @@
+{
+  "appId": "com.thrustroyale.app",
+  "appName": "Thrust Royale",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  },
+  "backgroundColor": "#0d0a14"
+}
